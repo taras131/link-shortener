@@ -1,0 +1,28 @@
+.form_wrapper {
+  height: calc(100% - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  padding: 20px;
+}
+
+.form fieldset {
+  border-radius: 20px;
+  border-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+  height: 400px;
+  width: 395px;
+  padding: 20px;
+}
+
+fieldset legend {
+  text-align: left;
+  font-size: 30px;
+  color: blue;
+}
