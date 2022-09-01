@@ -33,8 +33,10 @@ export const fetchLogin = async (user: any) => {
     if (response.ok) {
         setLocalStorage(decodedResponse.access_token)
         return decodedResponse
+    } else {
+        console.log(decodedResponse)
+        throw new Error(decodedResponse.message)
     }
-    throw new Error(decodedResponse.message)
 }
 
 export const fetchRegistration = async (user: { username: string, password: string }) => {
@@ -46,8 +48,11 @@ export const fetchRegistration = async (user: { username: string, password: stri
         },
     })
     const decodedResponse = await response.json()
+    console.log(decodedResponse)
     if (response.ok) {
         return decodedResponse
+    } else {
+        console.log(decodedResponse)
+        throw new Error(decodedResponse.message)
     }
-    throw new Error(decodedResponse.message)
 }
