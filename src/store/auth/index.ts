@@ -23,7 +23,6 @@ const auth = createSlice({
     },
     extraReducers: {
         [loginThunk.fulfilled.type]: (state) => {
-            console.log('fulfilled.type')
             state.isAuth = true
             state.isLoading = false;
         },
