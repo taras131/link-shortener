@@ -4,25 +4,27 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {geIsAuth} from "../../../store/auth/selector";
 import {useNavigate} from "react-router-dom";
 import routes from "../../../config/routes";
-import {toggleShowLinkModal} from "../../../store/link";
+import {exit} from "../../../store/auth";
+import {cleanLocalStorage} from "../../../api/api-auth";
 
-const Main = () => {
-    const {main, register, login, profile} = routes;
+const Profile = () => {
+    const {login} = routes;
     const isAuth = useAppSelector(state => geIsAuth(state))
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
     useEffect(() => {
         if (!isAuth) navigate(login.path)
     }, [isAuth])
-    const handleCreateLinkClick = () => {
-        dispatch(toggleShowLinkModal())
+    const handleExitClick = () => {
+        cleanLocalStorage()
+        dispatch(exit())
     }
     return (
-        <main>
-            Main
-            <Button text={"Укоротить"} isDisable={false} handleClick={handleCreateLinkClick}/>
-        </main>
+        <div>
+            Profile
+            <Button text={"Выйти"} handleClick={handleExitClick} isDisable={false}/>
+        </div>
     );
 };
 
-export default Main;
+export default Profile;

@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './app.css';
+import Router from "../../router/router";
+import {useAppSelector} from "../../hooks/redux";
+import Preloader from "../templates/preloader/preloader";
+import {getAuthIsLoading} from "../../store/auth/selector";
+import {getIsShowLinkModal} from "../../store/link/selector";
+import CreateLinkModal from "../organism/create-link-modal/create-link-modal";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const isAuthLoading = useAppSelector(state => getAuthIsLoading(state))
+    const isShowLinkModal = useAppSelector(state => getIsShowLinkModal(state))
+    if (isAuthLoading) return (<Preloader/>)
+    return (
+        <div className="App">
+            <Router/>
+            {isShowLinkModal && (<CreateLinkModal/>)}
+        </div>
+    );
 }
 
 export default App;

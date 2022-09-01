@@ -1,0 +1,30 @@
+.wrapper {
+  height: 80px;
+  background-color: blue;
+  font-size: 26px;
+  padding-right: 10px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.container ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+  height: 100%;
+}
+
+li:nth-child(2) {
+  margin-left: auto;
+}
+
+.container ul li {
+  list-style: none;
+}
