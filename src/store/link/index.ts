@@ -6,28 +6,42 @@ interface ILinkState {
     isLoading: boolean,
     errorMessage: string,
     isShowLinkModal: boolean,
-    newLink: ILink | null;
-    links: ILink[]
+    order: string[],
+    offset: number,
+    limit: number,
+    newLink: ILink | null,
+    links: ILink[],
+    thereIsNextPage: boolean
 }
 
 const initialState: ILinkState = {
     isLoading: false,
     errorMessage: '',
     isShowLinkModal: false,
+    order: [],
+    offset: 0,
+    limit: 10,
     newLink: null,
-    links: []
+    links: [],
+    thereIsNextPage: false
 }
 const link = createSlice({
     name: "link",
     initialState,
     reducers: {
-        toggleShowLinkModal (state) {
+        toggleShowLinkModal(state) {
             state.newLink = null
             state.isShowLinkModal = !state.isShowLinkModal
+        },
+        showNext(state) {
+            state.offset = state.offset + state.limit
+        },
+        showPrevious(state) {
+            state.offset = state.offset - state.limit
         }
     },
     extraReducers: {
-        [squeezeLink.fulfilled.type]: (state,  action: PayloadAction<ILink>) => {
+        [squeezeLink.fulfilled.type]: (state, action: PayloadAction<ILink>) => {
             state.newLink = action.payload
             state.isLoading = false;
         },
@@ -39,12 +53,14 @@ const link = createSlice({
             state.isLoading = false;
             state.errorMessage = action.payload;
         },
-        [getLinks.fulfilled.type]: (state,  action: PayloadAction<ILink[]>) => {
-            state.links = action.payload
+        [getLinks.fulfilled.type]: (state, action: PayloadAction<ILink[]>) => {
+            if (action.payload[10] && action.payload[10].id) state.thereIsNextPage = true
+            state.links = action.payload.slice(0, 10);
             state.isLoading = false;
         },
         [getLinks.pending.type]: (state) => {
-            state.isLoading = true
+            state.isLoading = true;
+            state.thereIsNextPage = false;
             state.errorMessage = '';
         },
         [getLinks.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -54,5 +70,5 @@ const link = createSlice({
     }
 })
 
-export const {toggleShowLinkModal} = link.actions
+export const {toggleShowLinkModal, showNext, showPrevious} = link.actions
 export default link.reducer;

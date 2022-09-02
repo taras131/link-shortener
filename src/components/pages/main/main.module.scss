@@ -1,0 +1,35 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.title_container {
+  width: 30%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 50px;
+  color: blue;
+  font-style: italic;
+  margin-right: auto;
+}
+
+.subtitle {
+  position: absolute;
+  font-size: 30px;
+  right: 20px;
+  bottom: 5px;
+  margin-left: auto;
+  text-decoration: underline;
+}
+
