@@ -1,0 +1,35 @@
+.table_section{
+
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.table caption {
+  margin: 10px;
+}
+
+.table th {
+  padding: 10px;
+  color: white;
+  background-color: blue;
+}
+
+.table tr:nth-child(2n+2) {
+  background-color: aqua;
+}
+
+.table td {
+  padding: 10px;
+}
+.pagination_buttons {
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

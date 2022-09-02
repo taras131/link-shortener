@@ -2,14 +2,18 @@ import React, {FC} from 'react';
 import styles from "./link.module.scss"
 import {ILink} from "../../../models/i-link";
 
-const Link:FC<ILink> = ({counter, id, short, target}) => {
+const Link: FC<ILink> = ({counter, id, short, target}) => {
+    const handleShortClick = () => {
+        navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + short)
+    }
     return (
-        <div>
-            <p>{counter}</p>
-            <p>{id}</p>
-            <p>{short}</p>
-            <p>{target}</p>
-        </div>
+        <tr>
+            <td className={styles.short} onClick={handleShortClick}>
+                {process.env.REACT_APP_API_URL + "/s/" + short}
+            </td>
+            <td className={styles.count}>{counter}</td>
+            <td className={styles.target}>{target}</td>
+        </tr>
     );
 };
 

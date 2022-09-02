@@ -9,3 +9,15 @@ export const getNewLink = (state: RootState) => {
 export const getIsShowLinkModal = (state: RootState) => {
     return state.link.isShowLinkModal
 }
+export const getOrder = (state: RootState) => {
+    return state.link.order
+}
+export const getOffset = (state: RootState) => {
+    return state.link.offset
+}
+export const getLimit = (state: RootState) => {
+    return state.link.limit
+}
+export const getThereIsNextPage = (state: RootState) => {
+    return state.link.thereIsNextPage
+}
