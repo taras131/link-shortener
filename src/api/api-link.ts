@@ -1,6 +1,5 @@
 import {getAccessToken} from "./api-auth";
-import {IParameters} from "../store/link/thunk";
-import {ILink} from "../models/i-link";
+import {ILink, IParameters} from "../models/i-link";
 
 const SQUEEZE_PATH = "/squeeze";
 const STATISTICS_PATH = "/statistics"
@@ -24,10 +23,14 @@ export const fetchSqueezeLink = async (link: string) => {
         }
     }
 }
-export const fetchGetLinks = async (parameters: IParameters):Promise<ILink []> => {
-    const {offset, limit} = parameters
+export const fetchGetLinks = async (parameters: IParameters): Promise<ILink []> => {
+    const {offset, limit, order} = parameters
     const token = getAccessToken()
-    const response = await fetch(`${process.env.REACT_APP_API_URL + STATISTICS_PATH}?offset=${offset}&limit=${limit}`,
+    let url = `${process.env.REACT_APP_API_URL + STATISTICS_PATH}?offset=${offset}&limit=${limit}`
+    if (order.short) url += "&order=" + order.short + "_short"
+    if (order.counter) url += "&order=" + order.counter + "_counter"
+    if (order.target) url += "&order=" + order.target + "_target"
+    const response = await fetch(url,
         {
             method: 'GET',
             headers: {

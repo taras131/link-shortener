@@ -15,6 +15,10 @@ const routes = {
         title: 'Профиль',
         path: '/profile',
     },
+    notFound: {
+        title: 'Страница не найдена',
+        path: '/*',
+    },
 
 }
 

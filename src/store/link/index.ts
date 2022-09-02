@@ -1,24 +1,30 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {getLinks, squeezeLink} from "./thunk";
-import {ILink} from "../../models/i-link";
+import {ILink, IOrder} from "../../models/i-link";
+
 
 interface ILinkState {
     isLoading: boolean,
     errorMessage: string,
     isShowLinkModal: boolean,
-    order: string[],
+    order: IOrder,
     offset: number,
     limit: number,
     newLink: ILink | null,
     links: ILink[],
-    thereIsNextPage: boolean
+    thereIsNextPage: boolean,
+
 }
 
 const initialState: ILinkState = {
     isLoading: false,
     errorMessage: '',
     isShowLinkModal: false,
-    order: [],
+    order: {
+        short: false,
+        counter: false,
+        target: false,
+    },
     offset: 0,
     limit: 10,
     newLink: null,
@@ -38,6 +44,11 @@ const link = createSlice({
         },
         showPrevious(state) {
             state.offset = state.offset - state.limit
+        },
+        setOrder (state, action: PayloadAction<any>) {
+            console.log(action.payload)
+            state.offset = 0
+            state.order = {...state.order, [action.payload.name]:  action.payload.value}
         }
     },
     extraReducers: {
@@ -55,6 +66,7 @@ const link = createSlice({
         },
         [getLinks.fulfilled.type]: (state, action: PayloadAction<ILink[]>) => {
             if (action.payload[10] && action.payload[10].id) state.thereIsNextPage = true
+            console.log(action.payload)
             state.links = action.payload.slice(0, 10);
             state.isLoading = false;
         },
@@ -70,5 +82,5 @@ const link = createSlice({
     }
 })
 
-export const {toggleShowLinkModal, showNext, showPrevious} = link.actions
+export const {toggleShowLinkModal, showNext, showPrevious, setOrder} = link.actions
 export default link.reducer;

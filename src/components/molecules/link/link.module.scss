@@ -1,16 +1,24 @@
 .short {
   cursor: pointer;
+  width: 15%;
 }
+
 .short:hover {
   text-shadow: 2px 2px 5px grey;
 }
 
 .count {
   text-align: center;
+  width: 5%;
 }
 
 .target {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 40%;
+  width: 80%;
+  word-break: break-all;
+}
+
+@media (max-width: 550px) {
+  .target {
+    display: none;
+  }
 }

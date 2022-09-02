@@ -1,11 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {fetchGetLinks, fetchSqueezeLink} from "../../api/api-link";
 import {handlerError} from "../auth/thunk";
-
-export interface IParameters {
-    offset: number,
-    limit: number
-}
+import {IParameters} from "../../models/i-link";
 
 export const squeezeLink = createAsyncThunk(
     'link/create',
@@ -18,6 +14,7 @@ export const squeezeLink = createAsyncThunk(
         }
     }
 )
+
 export const getLinks = createAsyncThunk(
     'link/get all',
     async (parameters: IParameters, ThunkAPI) => {

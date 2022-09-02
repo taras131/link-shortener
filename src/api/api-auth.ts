@@ -27,11 +27,12 @@ export const fetchLogin = async (user: any) => {
         body: formBody.join("&")
     })
     const decodedResponse = await response.json()
+    console.log(decodedResponse)
     if (response.ok) {
         setLocalStorage(decodedResponse.access_token)
         return decodedResponse
     } else {
-        throw new Error(decodedResponse.message)
+        throw new Error(decodedResponse.detail)
     }
 }
 

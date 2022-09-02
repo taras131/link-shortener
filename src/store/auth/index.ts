@@ -17,9 +17,9 @@ const auth = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        exit (state) {
+        exit(state) {
             state.isAuth = false
-        }
+        },
     },
     extraReducers: {
         [loginThunk.fulfilled.type]: (state) => {

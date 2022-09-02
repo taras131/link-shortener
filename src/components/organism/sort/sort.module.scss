@@ -1,0 +1,11 @@
+.sort_container {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 25px;
+}
+@media (max-width: 550px) {
+  .sort_container {
+    gap: 10px;
+  }
+}
