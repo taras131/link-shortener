@@ -1,0 +1,17 @@
+.wrapper{
+  margin-top: 30px;
+  border: 1px solid blue;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px;
+}
+.sort_title{
+  text-align: center;
+}
+.tags_container{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

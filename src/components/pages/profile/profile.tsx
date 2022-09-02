@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import routes from "../../../config/routes";
 import {exit} from "../../../store/auth";
 import {cleanLocalStorage} from "../../../api/api-auth";
+import styles from "./profile.module.scss";
 
 const Profile = () => {
     const {login} = routes;
@@ -20,7 +21,8 @@ const Profile = () => {
         dispatch(exit())
     }
     return (
-        <div>
+        <div className={styles.wrapper}>
+            <img src="https://placepic.ru/wp-content/uploads/2021/02/kinopoisk_ru_Brad_Pi-41.jpg" alt="avatar" className={styles.avatar}/>
             Profile
             <Button text={"Выйти"} handleClick={handleExitClick} isDisable={false}/>
         </div>

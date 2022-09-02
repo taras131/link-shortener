@@ -1,0 +1,36 @@
+.wrapper{
+  border: blue 2px solid;
+  border-radius: 100%;
+  color: blue;
+  cursor: pointer;
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+.wrapper:hover{
+  box-shadow: 0 0 3px 2px;
+}
+.wrapper::before{
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-top: 5px solid #6E18C0;
+  border-right: 5px solid #6E18C0;
+  left: 5px;
+  top: 5px;
+  transform: rotate(-45deg);
+}
+.active{
+  color: white;
+  background-color: blue;
+}
+.active.wrapper::before{
+  border-color: white;
+}
+.bottom_arrow {
+  transform: rotate(180deg);
+}
+.empty.wrapper:before {
+  display: none;
+}

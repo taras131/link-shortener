@@ -7,7 +7,7 @@ import Button from "../../atoms/button/button";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {registrationThunk, loginThunk} from "../../../store/auth/thunk";
 import styles from "./auth.module.scss";
-import {geIsAuth} from "../../../store/auth/selector";
+import {geIsAuth, getErrorMessage} from "../../../store/auth/selector";
 
 const initialValues = {
     username: "",
@@ -24,6 +24,7 @@ const Auth: FC = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
     const isAuth = useAppSelector(state => geIsAuth(state))
+    const errorMessage = useAppSelector(state=>getErrorMessage(state))
     const isLogin = pathname === login.path
     useEffect(() => {
         if (isAuth) navigate(main.path)
@@ -61,6 +62,7 @@ const Auth: FC = () => {
                            onChange={handleChange}
                            min={4}
                            max={20}/>
+                    <p className={styles.server_error}>{errorMessage}</p>
                     <Button text={isLogin ? "Войти" : "Зарегистрироваться"}
                             handleClick={handleSubmit}
                             isDisable={!isValid || values.username.length < 2 || values.username.password < 2}/>
