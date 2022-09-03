@@ -3,7 +3,7 @@ import {getLinks, squeezeLink} from "./thunk";
 import {ILink, IOrder} from "../../models/i-link";
 import {orderValuesVariants} from "../../config/constants";
 
-interface ILinkState {
+export interface ILinkState {
     isLoading: boolean,
     errorMessage: string,
     isShowLinkModal: boolean,
@@ -15,7 +15,7 @@ interface ILinkState {
     thereIsNextPage: boolean,
 }
 
-const initialState: ILinkState = {
+export const initialState: ILinkState = {
     isLoading: true,
     errorMessage: '',
     isShowLinkModal: false,

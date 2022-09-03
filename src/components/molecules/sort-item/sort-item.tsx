@@ -2,10 +2,10 @@ import React, {FC} from "react";
 import Tag from "../../atoms/tag/tag";
 import Card from "../card/card";
 import styles from "./sort-item.module.scss";
-import {orderValuesVariants} from "../../../config/constants";
+import {orderValuesVariants, sortVariants} from "../../../config/constants";
 
 interface ISortItem {
-    name: string
+    name: sortVariants.target | sortVariants.counter | sortVariants.short
     value: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
 }
 

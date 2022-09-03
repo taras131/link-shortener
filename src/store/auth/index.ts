@@ -3,17 +3,17 @@ import {loginThunk, registrationThunk} from "./thunk";
 import {IInfoMessage} from "../../models/i-autch";
 
 
-interface IAuthState {
+export interface IAuthState {
     isAuth: boolean,
     isLoading: boolean,
     infoMessage: IInfoMessage,
 }
 
-const initialInfoMessage = {
+export const initialInfoMessage = {
     isPositive: false,
     message: ""
 }
-const initialState: IAuthState = {
+export const initialState: IAuthState = {
     isAuth: false,
     isLoading: false,
     infoMessage: initialInfoMessage
