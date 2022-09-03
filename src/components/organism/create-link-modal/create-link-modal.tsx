@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from "../modal/modal";
 import Input from "../../molecules/input/input";
 import Button from "../../atoms/button/button";
 import {toggleShowLinkModal} from "../../../store/link";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {squeezeLink} from "../../../store/link/thunk";
-import {getNewLink} from "../../../store/link/selector";
+import {getErrorMessage, getIsLinkLoading, getNewLink} from "../../../store/link/selector";
+import Preloader from "../../templates/preloader/preloader";
 import styles from "./create-link-modal.module.scss";
 
 const CreateLinkModal = () => {
     const [value, setValue] = useState<string>("")
-    const [error, setError] = useState<string>("")
+    const [message, setMessage] = useState("Кликнете по ссылке чтобы скопировать")
     const dispatch = useAppDispatch()
     const newLink = useAppSelector(state => getNewLink(state))
+    const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
+    const errorMessage = useAppSelector(state => getErrorMessage(state))
     const handleChange = (e: any) => {
         setValue(e.target.value)
     }
@@ -23,9 +26,15 @@ const CreateLinkModal = () => {
     const closeModal = () => {
         dispatch(toggleShowLinkModal())
     }
+    useEffect(()=>{
+        if(errorMessage) {
+            closeModal()
+        }
+    },[errorMessage])
     const handleResultClick = () => {
         if (newLink) {
             navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + newLink.short)
+            setMessage("Ссылка успешно скопирована")
         }
     }
     return (
@@ -34,10 +43,11 @@ const CreateLinkModal = () => {
                 {newLink && (
                     <>
                         <span className={styles.result_title}>Результат</span>
-                        <span className={styles.result_content}
+                        <p className={styles.result_content}
                               onClick={handleResultClick}>
                             {process.env.REACT_APP_API_URL + "/s/" + newLink.short}
-                        </span>
+                        </p>
+                        <p>{message}</p>
                         <Button text={"Спасибо"} isDisable={false} handleClick={closeModal}/>
                     </>
                 )}
@@ -52,7 +62,10 @@ const CreateLinkModal = () => {
                                error={""}
                                min={1}
                                max={65536}/>
-                        <Button text={"Режь !"} isDisable={value.length === 0} handleClick={handleFormSubmit}/>
+                        {isLinkLoading && (<Preloader/>)}
+                        {!isLinkLoading && (
+                            <Button text={"Режь !"} isDisable={value.length === 0} handleClick={handleFormSubmit}/>
+                        )}
                     </>
                 )}
             </form>

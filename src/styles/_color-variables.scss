@@ -1,0 +1,13 @@
+$primary: #3366CC;
+$hover_primary: #3366CC;
+$secondary: #FF6600;
+$hover_secondary: #CC6633;
+$warning: #993333;
+
+:export {
+  primary: $primary;
+  hover_primary: $hover_primary;
+  secondary: $secondary;
+  hover_secondary: $hover_secondary;
+  warning: $warning;
+}

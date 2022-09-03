@@ -1,26 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Button from "../../atoms/button/button";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {geIsAuth} from "../../../store/auth/selector";
-import {useNavigate} from "react-router-dom";
-import routes from "../../../config/routes";
 import {toggleShowLinkModal} from "../../../store/link";
 import styles from "./main.module.scss"
 import TableLinks from "../../organism/table-links/table-links";
+import {getErrorMessage} from "../../../store/link/selector";
+import ErrorMessage from "../../organism/error-message/error-message";
 
 const Main = () => {
-    const {main, register, login, profile} = routes;
-    const isAuth = useAppSelector(state => geIsAuth(state))
     const dispatch = useAppDispatch()
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!isAuth) navigate(login.path)
-    }, [isAuth])
+    const errorMessage = useAppSelector(state => getErrorMessage(state))
     const handleCreateLinkClick = () => {
         dispatch(toggleShowLinkModal())
     }
+    if (errorMessage) return (<ErrorMessage errorMessage={errorMessage}/>)
     return (
-        <main>
+        <main className={styles.main}>
             <div className={styles.container}>
                 <section className={styles.header}>
                     <div className={styles.title_container}>

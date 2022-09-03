@@ -1,53 +1,39 @@
-const ACCESS_TOKEN = 'accessToken';
-const LOGIN_PATH = '/login';
-const REGISTER_PATH = '/register';
+import {
+    FETCH_APPLICATION_HEADER,
+    FETCH_LOGIN_PATH,
+    FETCH_REGISTER_PATH, FETCH_X_FORM_HEADER,
+    PASSWORD_PARAMETER_NAME,
+    POST_METHOD,
+    USER_NAME_PARAMETER_NAME
+} from "../utils/constants";
+import {handleResponse, setLocalStorage} from "../utils/services";
+import {IUserFromApi} from "../models/i-autch";
 
-const setLocalStorage = (accessToken: string) => {
-    localStorage.setItem(ACCESS_TOKEN, accessToken)
-}
-export const cleanLocalStorage = () => {
-    localStorage.removeItem(ACCESS_TOKEN)
-}
-export const getAccessToken = () => {
-    return localStorage.getItem(ACCESS_TOKEN)
-}
-
-export const fetchLogin = async (user: any) => {
+export const fetchLogin = async (user: IUserFromApi): Promise<string> => {
     let formBody = [];
     for (let property in user) {
         let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(user[property]);
+        let encodedValue = encodeURIComponent(user[property as keyof typeof user]);
         formBody.push(encodedKey + "=" + encodedValue);
     }
-    const response = await fetch(process.env.REACT_APP_API_URL + LOGIN_PATH, {
-        method: 'POST',
+    const response = await fetch(process.env.REACT_APP_API_URL + FETCH_LOGIN_PATH, {
+        method: POST_METHOD,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            "Content-Type": FETCH_X_FORM_HEADER
         },
         body: formBody.join("&")
     })
-    const decodedResponse = await response.json()
-    console.log(decodedResponse)
-    if (response.ok) {
-        setLocalStorage(decodedResponse.access_token)
-        return decodedResponse
-    } else {
-        throw new Error(decodedResponse.detail)
-    }
+    const decodedResponse = await handleResponse(response)
+    if (response.ok && decodedResponse.access_token) setLocalStorage(decodedResponse.access_token)
+    return decodedResponse
 }
-
-export const fetchRegistration = async (user: { username: string, password: string }) => {
-    const response = await fetch(process.env.REACT_APP_API_URL +
-        `${REGISTER_PATH}?username=${user.username}&password=${user.password}`, {
-        method: 'POST',
+export const fetchRegistration = async (user: IUserFromApi): Promise<{ username: string }> => {
+    const url = process.env.REACT_APP_API_URL + `${FETCH_REGISTER_PATH}?${USER_NAME_PARAMETER_NAME}=${user.username}&${PASSWORD_PARAMETER_NAME}=${user.password}`
+    const response = await fetch(url, {
+        method: POST_METHOD,
         headers: {
-            'accept': 'application/json'
+            "accept": FETCH_APPLICATION_HEADER
         },
     })
-    const decodedResponse = await response.json()
-    if (response.ok) {
-        return decodedResponse
-    } else {
-        throw new Error(decodedResponse.message)
-    }
+    return await handleResponse(response)
 }

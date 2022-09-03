@@ -1,13 +1,15 @@
 import React, {FC, useEffect} from 'react';
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import routes from "../../../config/routes";
 import Input from "../../molecules/input/input";
 import useFormWithValidation from "../../../hooks/useFormWithValidation";
 import Button from "../../atoms/button/button";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {registrationThunk, loginThunk} from "../../../store/auth/thunk";
+import {resetInfoMessage} from "../../../store/auth";
 import styles from "./auth.module.scss";
-import {geIsAuth, getErrorMessage} from "../../../store/auth/selector";
+import {getAuthIsLoading, getInfoMessage} from "../../../store/auth/selector";
+import classNames from "classnames";
 
 const initialValues = {
     username: "",
@@ -19,16 +21,12 @@ const initialErrors = {
 }
 
 const Auth: FC = () => {
-    const {login, register, main} = routes;
+    const {login, register} = routes;
     const {pathname} = useLocation();
     const dispatch = useAppDispatch()
-    const navigate = useNavigate();
-    const isAuth = useAppSelector(state => geIsAuth(state))
-    const errorMessage = useAppSelector(state=>getErrorMessage(state))
+    const infoMessage = useAppSelector(state => getInfoMessage(state))
+    const isAuthLoading = useAppSelector(state => getAuthIsLoading(state))
     const isLogin = pathname === login.path
-    useEffect(() => {
-        if (isAuth) navigate(main.path)
-    }, [isAuth])
     const {handleChange, isValid, errors, values, setValues, setIsValid} =
         useFormWithValidation(initialValues, initialErrors);
     const handleSubmit = (e: any) => {
@@ -39,6 +37,9 @@ const Auth: FC = () => {
             dispatch(registrationThunk(values))
         }
     }
+    useEffect(() => {
+        dispatch(resetInfoMessage())
+    }, [pathname])
     return (
         <div className={styles.form_wrapper}>
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -62,19 +63,21 @@ const Auth: FC = () => {
                            onChange={handleChange}
                            min={4}
                            max={20}/>
-                    <p className={styles.server_error}>{errorMessage}</p>
+                    <p className={classNames(styles.message, {
+                        [styles.positive_message]: infoMessage.isPositive
+                    })}>{infoMessage.message}</p>
                     <Button text={isLogin ? "Войти" : "Зарегистрироваться"}
                             handleClick={handleSubmit}
-                            isDisable={!isValid || values.username.length < 2 || values.username.password < 2}/>
+                            isDisable={!isValid || values.username.length < 2 || values.username.password < 2 || isAuthLoading}/>
                     <span>
                         {isLogin
                             ? (<p>
-                                <span>Ещё не зарегистрированы ?</span>
-                                <Link to={register.path}> Регистрация </Link>
+                                <span>Не зарегистрированы ?</span>
+                                <Link to={register.path}> Регистрация. </Link>
                             </p>)
                             : (<p>
                                 <span>Уже зарегистрированы ?</span>
-                                <Link to={login.path}> Вход </Link>
+                                <Link to={login.path}> Вход. </Link>
                             </p>)
                         }
                     </span>

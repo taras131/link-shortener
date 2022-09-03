@@ -1,0 +1,13 @@
+.variant_container{
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.variant_container span {
+  cursor: pointer;
+  color: blue;
+}
+.active {
+  text-decoration: underline;
+}

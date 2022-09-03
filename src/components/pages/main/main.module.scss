@@ -1,5 +1,9 @@
+.main {
+  min-height: calc(100% - 250px);
+}
 .container {
   max-width: 1440px;
+  min-height: 100%;
   margin: 0 auto;
   padding: 5px;
 }

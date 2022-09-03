@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {fetchGetLinks, fetchSqueezeLink} from "../../api/api-link";
-import {handlerError} from "../auth/thunk";
 import {IParameters} from "../../models/i-link";
+import {handlerError} from "../../utils/services";
+import {fetchSqueezeLink, fetchGetLinks} from "../../api/api-link";
 
 export const squeezeLink = createAsyncThunk(
     'link/create',

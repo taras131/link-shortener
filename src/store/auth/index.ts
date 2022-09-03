@@ -1,17 +1,23 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {loginThunk, registrationThunk} from "./thunk";
 
-
+export interface IInfoMessage {
+    isPositive: boolean,
+    message: string
+}
 interface IAuthState {
     isAuth: boolean,
     isLoading: boolean,
-    errorMessage: string,
+    infoMessage: IInfoMessage,
 }
-
+const initialInfoMessage = {
+    isPositive: false,
+    message: ""
+}
 const initialState: IAuthState = {
     isAuth: false,
     isLoading: false,
-    errorMessage: '',
+    infoMessage: initialInfoMessage
 }
 const auth = createSlice({
     name: "auth",
@@ -19,6 +25,9 @@ const auth = createSlice({
     reducers: {
         exit(state) {
             state.isAuth = false
+        },
+        resetInfoMessage(state) {
+            state.infoMessage = initialInfoMessage
         },
     },
     extraReducers: {
@@ -28,26 +37,26 @@ const auth = createSlice({
         },
         [loginThunk.pending.type]: (state) => {
             state.isLoading = true
-            state.errorMessage = '';
+            state.infoMessage = initialInfoMessage;
         },
         [loginThunk.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false;
-            state.errorMessage = action.payload;
+            state.infoMessage = {isPositive: false, message: action.payload}
         },
         [registrationThunk.fulfilled.type]: (state) => {
+            state.infoMessage = {isPositive: true, message: "Вы успешно зарегестрированы"};
             state.isLoading = false;
         },
         [registrationThunk.pending.type]: (state) => {
             state.isLoading = true
-            state.errorMessage = '';
+            state.infoMessage = initialInfoMessage;
         },
         [registrationThunk.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false;
-            state.errorMessage = action.payload;
-        },
-
+            state.infoMessage = {isPositive: false, message: action.payload}
+        }
     }
 })
 
-export const {exit} = auth.actions
+export const {exit, resetInfoMessage} = auth.actions
 export default auth.reducer;

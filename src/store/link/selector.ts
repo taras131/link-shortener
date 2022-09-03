@@ -21,3 +21,9 @@ export const getLimit = (state: RootState) => {
 export const getThereIsNextPage = (state: RootState) => {
     return state.link.thereIsNextPage
 }
+export const getIsLinkLoading =(state: RootState) => {
+    return state.link.isLoading
+}
+export const getErrorMessage =(state: RootState) => {
+    return state.link.errorMessage
+}
