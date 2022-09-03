@@ -3,10 +3,10 @@ import classNames from "classnames";
 import styles from "./tag.module.scss";
 import {setOrder} from "../../../store/link";
 import {useAppDispatch} from "../../../hooks/redux";
-import {orderValuesVariants} from "../../../config/constants";
+import {orderValuesVariants, sortVariants} from "../../../config/constants";
 
 interface ITag {
-    name: string,
+    name: sortVariants.target | sortVariants.counter | sortVariants.short,
     value: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
     activeValue: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc
 }
