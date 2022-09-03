@@ -4,7 +4,7 @@ import SetLimit from "../../molecules/set-limit/set-limit";
 import styles from "./sort.module.scss";
 import {useAppSelector} from "../../../hooks/redux";
 import {getOrder} from "../../../store/link/selector";
-import {sortVariants} from "../../../utils/constants";
+import {sortVariants} from "../../../config/constants";
 
 const Sort: FC = () => {
     const order = useAppSelector(state => getOrder(state))

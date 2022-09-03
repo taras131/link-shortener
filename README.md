@@ -1,47 +1,70 @@
-# Getting Started with Create React App
+# Link shortener
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Фронтенд сервиса коротких ссылок
 
-## Available Scripts
+## Стек:
 
-In the project directory, you can run:
+- React
+- Typescript
+- react-router-dom v6
+- Redux Toolkit
+- SCSS module
+- classNames
 
-### `npm start`
+## Инструкции по запуску
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Удостовериться, что установлены все зависимости `npm i` и актуальная версия
+Node.js. Тесты и сборка запускаются на `v16`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- запуск 
 
-### `npm test`
+```bash
+npm run start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- билд
 
-### `npm run build`
+```bash
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Документация по бекенду:
+- http://79.143.31.216/docs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Наименование файлов и папок:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Называть директории и файлы компонентов в нотации kebab-case
 
-### `npm run eject`
+## Файловая структура:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Приложение построено на основе атомарного дизайна.
+Распределение по директориям:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **components\atoms**: простые компоненты, из которых строятся более сложные
+  компоненты. Не могут включать в себя другие атомы,
+- **components\molecules**: состоят из атомов и представляют собой цельный
+  полезный
+  элемент. Включают простую логику и свои стили,
+- **components\organisms**: сочетания молекул, существующих вместе. Также могут
+  включать в себя атомы,
+- **components\templates**: разметка. Если вам нужен компонент, который бы
+  просто
+  разместил некоторые не связанные компоненты по определенной верстке,
+- **components\pages**: конечная точка роутера, финальный рендер целой страницы,
+- **assets**: изображения, шрифты и иконки,
+- **config**: конфигурационные файлы проекта + константы и роуты,
+- **hooks**: кастомные реакт-хуки для бизнес-логики,
+- **router**: роутер проекта,
+- **api**: запросы к API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Порядок импортов:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Импорт компонентов из 'react'
+2. Импорт всех сторонних библиотек.
+3. Импорт всех необходимых пользовательских компонентов
+4. Импорт стилей компонента
+5. Импорт всех необходимых redux-действий
+6. Импорт всех необходимых пользовательских утилит
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-"# link-shortener" 

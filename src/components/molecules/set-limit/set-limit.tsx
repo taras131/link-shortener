@@ -5,7 +5,7 @@ import styles from "./set-limit.module.scss";
 import {setLimit} from "../../../store/link";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {getLimit} from "../../../store/link/selector";
-import {LIMIT_VARIANTS} from "../../../utils/constants";
+import {LIMIT_VARIANTS} from "../../../config/constants";
 
 const SetLimit: FC = () => {
     const dispatch = useAppDispatch()

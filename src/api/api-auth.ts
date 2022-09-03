@@ -5,7 +5,7 @@ import {
     PASSWORD_PARAMETER_NAME,
     POST_METHOD,
     USER_NAME_PARAMETER_NAME
-} from "../utils/constants";
+} from "../config/constants";
 import {handleResponse, setLocalStorage} from "../utils/services";
 import {IUserFromApi} from "../models/i-autch";
 

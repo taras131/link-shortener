@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "./tag.module.scss";
 import {setOrder} from "../../../store/link";
 import {useAppDispatch} from "../../../hooks/redux";
-import {orderValuesVariants} from "../../../utils/constants";
+import {orderValuesVariants} from "../../../config/constants";
 
 interface ITag {
     name: string,

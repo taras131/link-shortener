@@ -1,4 +1,4 @@
-import {ACCESS_TOKEN, UNKNOWN_ERROR_MESSAGE} from "./constants";
+import {ACCESS_TOKEN, UNKNOWN_ERROR_MESSAGE} from "../config/constants";
 
 export const handlerError = (e: any) => {
     if (e instanceof Error && e.message) return e.message;

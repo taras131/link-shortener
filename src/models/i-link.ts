@@ -1,4 +1,4 @@
-import {orderValuesVariants} from "../utils/constants";
+import {orderValuesVariants} from "../config/constants";
 
 export interface ILink {
     counter: number,

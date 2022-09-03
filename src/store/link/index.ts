@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {getLinks, squeezeLink} from "./thunk";
 import {ILink, IOrder} from "../../models/i-link";
-import {orderValuesVariants} from "../../utils/constants";
+import {orderValuesVariants} from "../../config/constants";
 
 interface ILinkState {
     isLoading: boolean,

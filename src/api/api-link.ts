@@ -6,7 +6,7 @@ import {
     FETCH_STATISTICS_PATH, GET_METHOD, LIMIT_PARAMETER_NAME, LINK_PARAMETER_NAME, OFFSET_PARAMETER_NAME,
     ORDER_PARAMETER_NAME, orderValuesVariants, POST_METHOD,
     sortVariants
-} from "../utils/constants";
+} from "../config/constants";
 
 
 export const fetchSqueezeLink = async (link: string) => {

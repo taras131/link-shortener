@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import Tag from "../../atoms/tag/tag";
 import Card from "../card/card";
 import styles from "./sort-item.module.scss";
-import {orderValuesVariants} from "../../../utils/constants";
+import {orderValuesVariants} from "../../../config/constants";
 
 interface SortItem {
     name: string
