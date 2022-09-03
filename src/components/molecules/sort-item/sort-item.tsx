@@ -4,12 +4,12 @@ import Card from "../card/card";
 import styles from "./sort-item.module.scss";
 import {orderValuesVariants} from "../../../config/constants";
 
-interface SortItem {
+interface ISortItem {
     name: string
     value: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
 }
 
-const SortItem: FC<SortItem> = ({name, value}) => {
+const SortItem: FC<ISortItem> = ({name, value}) => {
     return (
         <Card>
             <p className={styles.sort_title}>{name}</p>

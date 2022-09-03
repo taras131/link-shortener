@@ -27,7 +27,7 @@ const Auth: FC = () => {
     const infoMessage = useAppSelector(state => getInfoMessage(state))
     const isAuthLoading = useAppSelector(state => getAuthIsLoading(state))
     const isLogin = pathname === login.path
-    const {handleChange, isValid, errors, values, setValues, setIsValid} =
+    const {handleChange, isValid, errors, values} =
         useFormWithValidation(initialValues, initialErrors);
     const handleSubmit = (e: React.FormEvent<EventTarget>) => {
         e.preventDefault()
@@ -39,7 +39,7 @@ const Auth: FC = () => {
     }
     useEffect(() => {
         dispatch(resetInfoMessage())
-    }, [pathname])
+    }, [pathname, dispatch])
     return (
         <div className={styles.form_wrapper}>
             <form className={styles.form} onSubmit={handleSubmit}>

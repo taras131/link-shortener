@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useCallback, useEffect, useState} from "react";
 import Modal from "../modal/modal";
 import Input from "../../molecules/input/input";
 import Button from "../../atoms/button/button";
@@ -23,14 +23,14 @@ const CreateLinkModal: FC = () => {
         e.preventDefault()
         dispatch(squeezeLink(value))
     }
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         dispatch(toggleShowLinkModal())
-    }
+    }, [dispatch])
     useEffect(() => {
         if (errorMessage) {
             closeModal()
         }
-    }, [errorMessage])
+    }, [errorMessage, closeModal])
     const handleResultClick = () => {
         if (newLink) {
             navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + newLink.short)
