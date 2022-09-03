@@ -1,8 +1,7 @@
 .wrapper {
   height: 80px;
-  background-color: blue;
+  background-color: #3366CC;
   font-size: 26px;
-  padding-right: 10px;
 }
 
 .container {
@@ -27,4 +26,14 @@ li:nth-child(2) {
 
 .container ul li {
   list-style: none;
+}
+@media (max-width: 550px) {
+  .wrapper {
+    font-size: 22px;
+  }
+}
+@media (max-width: 400px) {
+  .wrapper {
+    font-size: 18px;
+  }
 }

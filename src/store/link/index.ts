@@ -17,7 +17,7 @@ interface ILinkState {
 }
 
 const initialState: ILinkState = {
-    isLoading: false,
+    isLoading: true,
     errorMessage: '',
     isShowLinkModal: false,
     order: {
@@ -45,10 +45,13 @@ const link = createSlice({
         showPrevious(state) {
             state.offset = state.offset - state.limit
         },
-        setOrder (state, action: PayloadAction<any>) {
-            console.log(action.payload)
+        setOrder(state, action: PayloadAction<any>) {
             state.offset = 0
-            state.order = {...state.order, [action.payload.name]:  action.payload.value}
+            state.order = {...state.order, [action.payload.name]: action.payload.value}
+        },
+        setLimit(state, action: PayloadAction<number>) {
+            state.limit = action.payload
+            state.offset = 0
         }
     },
     extraReducers: {
@@ -65,9 +68,8 @@ const link = createSlice({
             state.errorMessage = action.payload;
         },
         [getLinks.fulfilled.type]: (state, action: PayloadAction<ILink[]>) => {
-            if (action.payload[10] && action.payload[10].id) state.thereIsNextPage = true
-            console.log(action.payload)
-            state.links = action.payload.slice(0, 10);
+            if (action.payload[state.limit] && action.payload[state.limit].id) state.thereIsNextPage = true
+            state.links = action.payload.slice(0, state.limit);
             state.isLoading = false;
         },
         [getLinks.pending.type]: (state) => {
@@ -82,5 +84,5 @@ const link = createSlice({
     }
 })
 
-export const {toggleShowLinkModal, showNext, showPrevious, setOrder} = link.actions
+export const {toggleShowLinkModal, showNext, showPrevious, setOrder, setLimit} = link.actions
 export default link.reducer;

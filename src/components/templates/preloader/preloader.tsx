@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from "./preloader.module.scss";
 
 const Preloader = () => {
     return (
-        <div>
+        <p className={styles.wrapper}>
             ....Загрузка....
-        </div>
+        </p>
     );
 };
 

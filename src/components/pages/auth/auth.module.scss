@@ -1,12 +1,12 @@
 .form_wrapper {
-  height: calc(100% - 110px);
+  min-height: calc(100% - 250px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .form {
-  padding: 20px;
+  padding: 10px;
 }
 
 .form fieldset {
@@ -17,17 +17,29 @@
   justify-content: space-between;
   gap: 25px;
   height: 500px;
-  width: 395px;
+  width: 400px;
   padding: 20px;
 }
 
-fieldset legend {
+.form fieldset legend {
   text-align: left;
   font-size: 30px;
   color: blue;
 }
-.server_error{
+.message{
   min-height: 25px;
   margin-top: 15px;
   color: red;
+}
+.positive_message{
+  color: green;
+}
+.form fieldset p {
+  text-align: center;
+}
+@media (max-width: 410px) {
+  .form fieldset {
+    width: 320px;
+    padding: 5px;
+  }
 }

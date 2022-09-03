@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
-import styles from './header.module.scss';
 import routes from "../../../config/routes";
 import HeaderLink from "../../atoms/header-link/header-link";
 import {useAppSelector} from "../../../hooks/redux";
-import {geIsAuth} from "../../../store/auth/selector";
+import {getIsAuth} from "../../../store/auth/selector";
+import styles from './header.module.scss';
 
 const Header: FC = () => {
     const {main, register, login, profile} = routes;
-    const isAuth = useAppSelector(state => geIsAuth(state))
+    const isAuth = useAppSelector(state => getIsAuth(state))
     return (
         <header className={styles.wrapper}>
             <nav className={styles.container}>

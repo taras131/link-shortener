@@ -1,12 +1,13 @@
 import {RootState} from "../store";
+import {IInfoMessage} from "./index";
 
-export const geIsAuth = (state: RootState): boolean => {
+export const getIsAuth = (state: RootState): boolean => {
     return state.auth.isAuth
 }
 export const getAuthIsLoading = (state: RootState): boolean => {
     return state.auth.isLoading
 }
-export const getErrorMessage = (state: RootState): string => {
-    return state.auth.errorMessage
+export const getInfoMessage = (state: RootState): IInfoMessage => {
+    return state.auth.infoMessage
 }
 
