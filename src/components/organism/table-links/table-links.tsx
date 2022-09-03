@@ -1,5 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect} from "react";
+import Link from "../../molecules/link/link";
+import Button from "../../atoms/button/button";
+import Sort from "../sort/sort";
+import Preloader from "../../templates/preloader/preloader";
+import styles from "./table-links.module.scss";
+import {getLinks} from "../../../store/link/thunk";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
+import {showNext, showPrevious} from "../../../store/link";
 import {
     getAllLinks,
     getIsLinkLoading,
@@ -8,15 +15,8 @@ import {
     getOrder,
     getThereIsNextPage
 } from "../../../store/link/selector";
-import {getLinks} from "../../../store/link/thunk";
-import Link from "../../molecules/link/link";
-import Button from "../../atoms/button/button";
-import {showNext, showPrevious} from "../../../store/link";
-import Sort from "../sort/sort";
-import styles from "./table-links.module.scss";
-import Preloader from "../../templates/preloader/preloader";
 
-const TableLinks = () => {
+const TableLinks: FC = () => {
     const dispatch = useAppDispatch()
     const links = useAppSelector(state => getAllLinks(state))
     const offset = useAppSelector(state => getOffset(state))
@@ -38,7 +38,7 @@ const TableLinks = () => {
     if (isLinkLoading) return (<Preloader/>)
     if (linksList.length === 0) return (<p>У вас пока нет ссылок</p>)
     return (
-        <section className={styles.table_section}>
+        <section>
             <Sort/>
             <table className={styles.table}>
                 <caption>История сокращений. Кликнете по ссылке чтобы скопировать.</caption>

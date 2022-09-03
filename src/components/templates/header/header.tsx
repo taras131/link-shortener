@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import routes from "../../../config/routes";
+import React, {FC} from "react";
 import HeaderLink from "../../atoms/header-link/header-link";
+import styles from './header.module.scss';
 import {useAppSelector} from "../../../hooks/redux";
 import {getIsAuth} from "../../../store/auth/selector";
-import styles from './header.module.scss';
+import routes from "../../../config/routes";
 
 const Header: FC = () => {
     const {main, register, login, profile} = routes;
@@ -20,7 +20,6 @@ const Header: FC = () => {
                         </>
                     )}
                     {isAuth && (<HeaderLink path={profile.path} title={profile.title}/>)}
-
                 </ul>
             </nav>
         </header>

@@ -1,15 +1,15 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect} from "react";
+import classNames from "classnames";
 import {Link, useLocation} from "react-router-dom";
-import routes from "../../../config/routes";
 import Input from "../../molecules/input/input";
-import useFormWithValidation from "../../../hooks/useFormWithValidation";
 import Button from "../../atoms/button/button";
+import styles from "./auth.module.scss";
+import routes from "../../../config/routes";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {registrationThunk, loginThunk} from "../../../store/auth/thunk";
 import {resetInfoMessage} from "../../../store/auth";
-import styles from "./auth.module.scss";
 import {getAuthIsLoading, getInfoMessage} from "../../../store/auth/selector";
-import classNames from "classnames";
+import useFormWithValidation from "../../../hooks/useFormWithValidation";
 
 const initialValues = {
     username: "",
@@ -29,7 +29,7 @@ const Auth: FC = () => {
     const isLogin = pathname === login.path
     const {handleChange, isValid, errors, values, setValues, setIsValid} =
         useFormWithValidation(initialValues, initialErrors);
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<EventTarget>) => {
         e.preventDefault()
         if (isLogin) {
             dispatch(loginThunk(values))

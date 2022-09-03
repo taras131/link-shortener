@@ -1,6 +1,9 @@
+@use "src/styles/color-variables" as vars;
+
 .main {
   min-height: calc(100% - 250px);
 }
+
 .container {
   max-width: 1440px;
   min-height: 100%;
@@ -23,11 +26,10 @@
 
 .title {
   font-size: 50px;
-  color: blue;
+  color: vars.$primary;
   font-style: italic;
   margin-right: auto;
 }
-
 
 .subtitle {
   position: absolute;

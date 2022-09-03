@@ -1,4 +1,4 @@
-import React, {FC, ReactElement} from 'react';
+import React, {FC, ReactElement} from "react";
 import {Navigate} from "react-router-dom";
 import {useAppSelector} from "../../hooks/redux";
 import {getIsAuth} from "../../store/auth/selector";

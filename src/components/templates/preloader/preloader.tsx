@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from "react";
 import styles from "./preloader.module.scss";
 
-const Preloader = () => {
+const Preloader: FC = () => {
     return (
         <p className={styles.wrapper}>
             ....Загрузка....

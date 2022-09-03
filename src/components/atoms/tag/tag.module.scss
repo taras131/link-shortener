@@ -1,32 +1,35 @@
+@use "src/styles/color-variables" as vars;
+
 .wrapper{
-  border: blue 2px solid;
+  border: 2px solid vars.$primary;
   border-radius: 100%;
-  color: blue;
+  color: vars.$primary;
   cursor: pointer;
   position: relative;
   height: 24px;
   width: 24px;
+  &:hover{
+    box-shadow: 0 0 3px 2px;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-top: 5px solid vars.$primary;
+    border-right: 5px solid vars.$primary;
+    left: 5px;
+    top: 5px;
+    transform: rotate(-45deg);
+  }
 }
-.wrapper:hover{
-  box-shadow: 0 0 3px 2px;
-}
-.wrapper::before{
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-top: 5px solid #6E18C0;
-  border-right: 5px solid #6E18C0;
-  left: 5px;
-  top: 5px;
-  transform: rotate(-45deg);
-}
+
 .active{
-  color: white;
-  background-color: blue;
+  color: vars.$white;
+  background-color: vars.$primary;
 }
 .active.wrapper::before{
-  border-color: white;
+  border-color: vars.$white;
 }
 .bottom_arrow {
   transform: rotate(180deg);

@@ -1,13 +1,14 @@
-import React, {FC} from 'react';
-import styles from "./tag.module.scss";
+import React, {FC} from "react";
 import classNames from "classnames";
+import styles from "./tag.module.scss";
 import {setOrder} from "../../../store/link";
 import {useAppDispatch} from "../../../hooks/redux";
+import {orderValuesVariants} from "../../../utils/constants";
 
 interface ITag {
-    name: string
-    value: false | "asc" | "desc",
-    activeValue: false | "asc" | "desc",
+    name: string,
+    value: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
+    activeValue: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc
 }
 
 const Tag: FC<ITag> = ({name, activeValue, value}) => {
@@ -18,11 +19,10 @@ const Tag: FC<ITag> = ({name, activeValue, value}) => {
     return (
         <div className={classNames(styles.wrapper, {
             [styles.active]: value === activeValue,
-            [styles.bottom_arrow]: value === "desc",
-            [styles.empty]: value === false,
+            [styles.bottom_arrow]: value === orderValuesVariants.desc,
+            [styles.empty]: value === orderValuesVariants.not,
         })}
              onClick={handleClick}>
-
         </div>
     );
 };

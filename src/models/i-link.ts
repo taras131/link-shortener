@@ -1,3 +1,5 @@
+import {orderValuesVariants} from "../utils/constants";
+
 export interface ILink {
     counter: number,
     id: number,
@@ -5,9 +7,9 @@ export interface ILink {
     target: number
 }
 export interface IOrder {
-    short: false | "asc" | "desc",
-    counter: false | "asc" | "desc",
-    target: false | "asc" | "desc",
+    short: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
+    counter: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
+    target: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc
 }
 export interface IParameters {
     offset: number,

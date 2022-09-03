@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from "react";
 import Button from "../../atoms/button/button";
+import styles from "./profile.module.scss";
 import {useAppDispatch} from "../../../hooks/redux";
 import {exit} from "../../../store/auth";
-import styles from "./profile.module.scss";
 import {cleanLocalStorage} from "../../../utils/services";
 
-const Profile = () => {
+const Profile: FC = () => {
     const dispatch = useAppDispatch()
     const handleExitClick = () => {
         cleanLocalStorage()
