@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from "react";
 import Modal from "../modal/modal";
 import Input from "../../molecules/input/input";
 import Button from "../../atoms/button/button";
+import Preloader from "../../templates/preloader/preloader";
+import styles from "./create-link-modal.module.scss";
 import {toggleShowLinkModal} from "../../../store/link";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {squeezeLink} from "../../../store/link/thunk";
 import {getErrorMessage, getIsLinkLoading, getNewLink} from "../../../store/link/selector";
-import Preloader from "../../templates/preloader/preloader";
-import styles from "./create-link-modal.module.scss";
 
-const CreateLinkModal = () => {
+const CreateLinkModal: FC = () => {
     const [value, setValue] = useState<string>("")
     const [message, setMessage] = useState("Кликнете по ссылке чтобы скопировать")
     const dispatch = useAppDispatch()
@@ -26,11 +26,11 @@ const CreateLinkModal = () => {
     const closeModal = () => {
         dispatch(toggleShowLinkModal())
     }
-    useEffect(()=>{
-        if(errorMessage) {
+    useEffect(() => {
+        if (errorMessage) {
             closeModal()
         }
-    },[errorMessage])
+    }, [errorMessage])
     const handleResultClick = () => {
         if (newLink) {
             navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + newLink.short)
@@ -44,7 +44,7 @@ const CreateLinkModal = () => {
                     <>
                         <span className={styles.result_title}>Результат</span>
                         <p className={styles.result_content}
-                              onClick={handleResultClick}>
+                           onClick={handleResultClick}>
                             {process.env.REACT_APP_API_URL + "/s/" + newLink.short}
                         </p>
                         <p>{message}</p>

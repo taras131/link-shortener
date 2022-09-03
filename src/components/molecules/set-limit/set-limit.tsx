@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React, {FC} from "react";
+import classNames from "classnames";
 import Card from "../card/card";
-import {LIMIT_VARIANTS} from "../../../utils/constants";
+import styles from "./set-limit.module.scss";
 import {setLimit} from "../../../store/link";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import styles from "./set-limit.module.scss"
-import classNames from "classnames";
 import {getLimit} from "../../../store/link/selector";
+import {LIMIT_VARIANTS} from "../../../utils/constants";
 
 const SetLimit: FC = () => {
     const dispatch = useAppDispatch()

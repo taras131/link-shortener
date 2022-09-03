@@ -1,5 +1,5 @@
 import {RootState} from "../store";
-import {IInfoMessage} from "./index";
+import {IInfoMessage} from "../../models/i-autch";
 
 export const getIsAuth = (state: RootState): boolean => {
     return state.auth.isAuth

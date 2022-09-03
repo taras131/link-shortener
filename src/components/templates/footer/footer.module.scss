@@ -1,18 +1,23 @@
+@use "src/styles/color-variables" as vars;
+
 .footer {
-  background-color: #1b1f3b;
+  background-color: vars.$dark_primary;
   padding: 40px;
   bottom: 0;
 }
-.footer h2{
+
+.footer h2 {
   margin-top: 20px;
-  color: white;
+  color: vars.$white;
   text-align: center;
 }
-.footer p{
+
+.footer p {
   margin-top: 20px;
   text-align: center;
-  color: #2591ae;
+  color: vars.$table_row;
 }
+
 @media (max-width: 550px) {
   .footer {
     padding: 5px;

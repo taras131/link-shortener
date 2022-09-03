@@ -1,16 +1,25 @@
+@use "src/styles/color-variables" as vars;
+@use "src/styles/sizes-variable" as size-vars;
+
 .button {
-  box-sizing: border-box;
   padding: 24px;
-  background-color: orange;
-  color: white;
+  background-color: vars.$secondary;
+  color: vars.$white;
   border: none;
-  border-radius: 16px;
+  border-radius: size-vars.$border-radius;
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
   transition: 0.3s;
+
+  &:hover {
+    background-color: vars.$hover_secondary;
+  }
+
   &:disabled {
     cursor: auto;
-    background-color: gray;
+    background-color: vars.$disable;
   }
+
+
 }

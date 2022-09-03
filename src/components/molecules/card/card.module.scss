@@ -1,6 +1,9 @@
-.wrapper{
-  border: 1px solid blue;
-  border-radius: 20px;
+@use "src/styles/color-variables" as vars;
+@use "src/styles/sizes-variable" as size-vars;
+
+.wrapper {
+  border: 1px solid vars.$primary;
+  border-radius: size-vars.$border-radius;
   padding: 10px;
   box-shadow: 2px 2px 5px;
 }

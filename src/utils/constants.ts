@@ -19,3 +19,4 @@ export const POST_METHOD = "POST";
 export const GET_METHOD = "GET";
 
 export enum sortVariants {short = "short", counter = "counter", target = "target"}
+export enum orderValuesVariants {not = 'not', desc = "desc", asc = "asc"}

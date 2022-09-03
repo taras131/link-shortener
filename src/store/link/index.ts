@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {getLinks, squeezeLink} from "./thunk";
 import {ILink, IOrder} from "../../models/i-link";
-
+import {orderValuesVariants} from "../../utils/constants";
 
 interface ILinkState {
     isLoading: boolean,
@@ -13,7 +13,6 @@ interface ILinkState {
     newLink: ILink | null,
     links: ILink[],
     thereIsNextPage: boolean,
-
 }
 
 const initialState: ILinkState = {
@@ -21,9 +20,9 @@ const initialState: ILinkState = {
     errorMessage: '',
     isShowLinkModal: false,
     order: {
-        short: false,
-        counter: false,
-        target: false,
+        short: orderValuesVariants.not,
+        counter: orderValuesVariants.not,
+        target: orderValuesVariants.not,
     },
     offset: 0,
     limit: 10,

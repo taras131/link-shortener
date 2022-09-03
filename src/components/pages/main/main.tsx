@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {FC} from "react";
+import TableLinks from "../../organism/table-links/table-links";
 import Button from "../../atoms/button/button";
+import ErrorMessage from "../../organism/error-message/error-message";
+import styles from "./main.module.scss"
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {toggleShowLinkModal} from "../../../store/link";
-import styles from "./main.module.scss"
-import TableLinks from "../../organism/table-links/table-links";
 import {getErrorMessage} from "../../../store/link/selector";
-import ErrorMessage from "../../organism/error-message/error-message";
 
-const Main = () => {
+const Main: FC = () => {
     const dispatch = useAppDispatch()
     const errorMessage = useAppSelector(state => getErrorMessage(state))
     const handleCreateLinkClick = () => {

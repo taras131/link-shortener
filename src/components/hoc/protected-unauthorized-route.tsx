@@ -1,8 +1,8 @@
 import React, {FC, ReactElement} from 'react';
 import {Navigate} from "react-router-dom";
 import {useAppSelector} from "../../hooks/redux";
-import routes from "../../config/routes";
 import {getIsAuth} from "../../store/auth/selector";
+import routes from "../../config/routes";
 
 interface IProtectedUnauthorizedRoute {
     children: ReactElement

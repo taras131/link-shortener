@@ -1,3 +1,5 @@
+@use "src/styles/color-variables" as vars;
+
 .form_wrapper {
   min-height: calc(100% - 250px);
   display: flex;
@@ -24,19 +26,23 @@
 .form fieldset legend {
   text-align: left;
   font-size: 30px;
-  color: blue;
+  color: vars.$primary;
 }
-.message{
+
+.message {
   min-height: 25px;
   margin-top: 15px;
-  color: red;
+  color: vars.$warning;
 }
-.positive_message{
-  color: green;
+
+.positive_message {
+  color: vars.$green;
 }
+
 .form fieldset p {
   text-align: center;
 }
+
 @media (max-width: 410px) {
   .form fieldset {
     width: 320px;

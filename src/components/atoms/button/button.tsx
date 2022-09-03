@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
+import React, {FC} from "react";
 import styles from "./button.module.scss"
 
 interface IButton {
     text: string,
     isDisable: boolean,
-    handleClick: (e: any) => void
+    handleClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 const Button: FC<IButton> = ({text, handleClick, isDisable}) => {

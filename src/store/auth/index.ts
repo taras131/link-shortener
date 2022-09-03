@@ -1,15 +1,14 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {loginThunk, registrationThunk} from "./thunk";
+import {IInfoMessage} from "../../models/i-autch";
 
-export interface IInfoMessage {
-    isPositive: boolean,
-    message: string
-}
+
 interface IAuthState {
     isAuth: boolean,
     isLoading: boolean,
     infoMessage: IInfoMessage,
 }
+
 const initialInfoMessage = {
     isPositive: false,
     message: ""

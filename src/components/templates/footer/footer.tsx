@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
+import React, {FC} from "react";
 import styles from "./footer.module.scss";
 
-const Footer:FC = () => {
+const Footer: FC = () => {
     return (
         <div className={styles.footer}>
             <h2>Сократить ссылку легко</h2>

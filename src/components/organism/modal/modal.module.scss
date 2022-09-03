@@ -1,3 +1,5 @@
+@use "src/styles/color-variables" as vars;
+
 .content {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,7 @@
   width: 720px;
   max-width: 100%;
   border-radius: 40px;
-  background: linear-gradient(to top right, blue, pink);
+  background: linear-gradient(to top right, vars.$primary, vars.$white);
   z-index: 9999;
   position: fixed;
   top: 50%;
@@ -21,7 +23,7 @@
   position: absolute;
   left: 30px;
   top: 30px;
-  color: white;
+  color: vars.$white;
   font-size: 20px;
 }
 

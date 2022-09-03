@@ -1,13 +1,11 @@
 $primary: #3366CC;
 $hover_primary: #3366CC;
+$dark_primary: #1b1f3b;
 $secondary: #FF6600;
 $hover_secondary: #CC6633;
 $warning: #993333;
-
-:export {
-  primary: $primary;
-  hover_primary: $hover_primary;
-  secondary: $secondary;
-  hover_secondary: $hover_secondary;
-  warning: $warning;
-}
+$disable: #CCCCCC;
+$table_row: #33CCFF;
+$white: white;
+$black: black;
+$green: green;

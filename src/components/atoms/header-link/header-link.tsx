@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {Link, useLocation} from "react-router-dom";
-import styles from "./header-link.module.css";
+import React, {FC} from "react";
 import classNames from "classnames";
+import styles from "./header-link.module.scss";
+import {Link, useLocation} from "react-router-dom";
 
 interface IHeaderLink {
     path: string,

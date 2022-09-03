@@ -1,5 +1,5 @@
-import React, {FC, useCallback, useEffect} from 'react';
-import ReactDOM from 'react-dom'
+import React, {FC, useCallback, useEffect} from "react";
+import ReactDOM from "react-dom";
 import ModalOverlay from "../../atoms/modal-overlay/modal-overlay";
 import styles from "./modal.module.scss";
 

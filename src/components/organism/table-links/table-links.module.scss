@@ -1,6 +1,4 @@
-.table_section {
-
-}
+@use "src/styles/color-variables" as vars;
 
 .table {
   border-collapse: collapse;
@@ -14,12 +12,12 @@
 
 .table th {
   padding: 10px;
-  color: white;
-  background-color: blue;
+  color: vars.$white;
+  background-color: vars.$primary;
 }
 
 .table tr:nth-child(2n+2) {
-  background-color: aqua;
+  background-color: vars.$table_row;
 }
 
 .table td {

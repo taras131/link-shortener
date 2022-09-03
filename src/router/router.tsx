@@ -1,6 +1,5 @@
-import React from 'react';
+import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import routes from "../config/routes";
 import Layout from "../components/templates/layout/layout";
 import Main from "../components/pages/main/main";
 import Auth from "../components/pages/auth/auth";
@@ -8,6 +7,7 @@ import Profile from "../components/pages/profile/profile";
 import NotFound from "../components/pages/not-found/not-found";
 import ProtectedAuthorizedRoute from "../components/hoc/protected-authorized-route";
 import ProtectedUnauthorizedRoute from "../components/hoc/protected-unauthorized-route";
+import routes from "../config/routes";
 
 const Router = () => {
     const {main, register, login, profile, notFound} = routes;
