@@ -9,19 +9,37 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {squeezeLink} from "../../../store/link/thunk";
 import {getErrorMessage, getIsLinkLoading, getNewLink} from "../../../store/link/selector";
 
+
+const startMessage = "Вставьте ссылку в поле ниже"
+const resultMessage = "Кликнете по ссылке чтобы скопировать"
+const finishMessage = "Ссылка успешно скопирована"
+const errorValidateLinkMessage = "Похоже, это не ссылка"
+
 const CreateLinkModal: FC = () => {
     const [value, setValue] = useState<string>("")
-    const [message, setMessage] = useState("Кликнете по ссылке чтобы скопировать")
+    const [message, setMessage] = useState(startMessage)
     const dispatch = useAppDispatch()
     const newLink = useAppSelector(state => getNewLink(state))
     const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
     const errorMessage = useAppSelector(state => getErrorMessage(state))
-    const handleChange = (e: any) => {
+    const linkValidation = (link: string): boolean => {
+        try {
+            let url = new URL(link);
+            return true
+        } catch (_) {
+            setMessage(errorValidateLinkMessage)
+            return false;
+        }
+    }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMessage(startMessage)
         setValue(e.target.value)
     }
-    const handleFormSubmit = (e: any) => {
+    const handleFormSubmit = (e: React.FormEvent<EventTarget>) => {
         e.preventDefault()
-        dispatch(squeezeLink(value))
+        if (linkValidation(value)) {
+            dispatch(squeezeLink(value))
+        }
     }
     const closeModal = useCallback(() => {
         dispatch(toggleShowLinkModal())
@@ -34,20 +52,21 @@ const CreateLinkModal: FC = () => {
     const handleResultClick = () => {
         if (newLink) {
             navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + newLink.short)
-            setMessage("Ссылка успешно скопирована")
+            setMessage(finishMessage)
         }
     }
+    useEffect(() => {
+        if (newLink) setMessage(resultMessage)
+    }, [newLink])
     return (
         <Modal closeModal={closeModal} title={"Здесь режут ссылки"}>
             <form onSubmit={handleFormSubmit} className={styles.form}>
                 {newLink && (
                     <>
-                        <span className={styles.result_title}>Результат</span>
                         <p className={styles.result_content}
                            onClick={handleResultClick}>
                             {process.env.REACT_APP_API_URL + "/s/" + newLink.short}
                         </p>
-                        <p>{message}</p>
                         <Button text={"Спасибо"} isDisable={false} handleClick={closeModal}/>
                     </>
                 )}
@@ -58,7 +77,7 @@ const CreateLinkModal: FC = () => {
                                name={"link"}
                                onChange={handleChange}
                                type={"text"}
-                               labelName={"Ссылка для обрезания"}
+                               labelName={message}
                                error={""}
                                min={1}
                                max={65536}/>
