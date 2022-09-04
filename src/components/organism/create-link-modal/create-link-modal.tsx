@@ -11,55 +11,55 @@ import {getErrorMessage, getIsLinkLoading, getNewLink} from "../../../store/link
 import {FETCH_REDIRECT_PATH} from "../../../config/constants";
 
 
-const startMessage = "Вставьте ссылку в поле ниже"
-const resultMessage = "Кликнете по ссылке чтобы скопировать"
-const finishMessage = "Ссылка успешно скопирована"
-const errorValidateLinkMessage = "Похоже, это не ссылка"
+const startMessage = "Вставьте ссылку в поле ниже";
+const resultMessage = "Кликнете по ссылке чтобы скопировать";
+const finishMessage = "Ссылка успешно скопирована";
+const errorValidateLinkMessage = "Похоже, это не ссылка";
 
 const CreateLinkModal: FC = () => {
-    const [value, setValue] = useState<string>("")
-    const [message, setMessage] = useState(startMessage)
-    const dispatch = useAppDispatch()
-    const newLink = useAppSelector(state => getNewLink(state))
-    const newLinkFullValue = `${process.env.REACT_APP_API_URL+FETCH_REDIRECT_PATH}/${newLink}`
-    const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
-    const errorMessage = useAppSelector(state => getErrorMessage(state))
+    const [value, setValue] = useState<string>("");
+    const [message, setMessage] = useState(startMessage);
+    const dispatch = useAppDispatch();
+    const newLink = useAppSelector(state => getNewLink(state));
+    const newLinkFullValue = `${process.env.REACT_APP_API_URL+FETCH_REDIRECT_PATH}/${newLink}`;
+    const isLinkLoading = useAppSelector(state => getIsLinkLoading(state));
+    const errorMessage = useAppSelector(state => getErrorMessage(state));
     const linkValidation = (link: string): boolean => {
         try {
             new URL(link);
-            return true
+            return true;
         } catch (_) {
-            setMessage(errorValidateLinkMessage)
+            setMessage(errorValidateLinkMessage);
             return false;
         }
-    }
+    };
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMessage(startMessage)
-        setValue(e.target.value)
-    }
+        setMessage(startMessage);
+        setValue(e.target.value);
+    };
     const handleFormSubmit = (e: React.FormEvent<EventTarget>) => {
-        e.preventDefault()
+        e.preventDefault();
         if (linkValidation(value)) {
-            dispatch(squeezeLink(value))
+            dispatch(squeezeLink(value));
         }
-    }
+    };
     const closeModal = useCallback(() => {
-        dispatch(toggleShowLinkModal())
-    }, [dispatch])
+        dispatch(toggleShowLinkModal());
+    }, [dispatch]);
     useEffect(() => {
         if (errorMessage) {
-            closeModal()
+            closeModal();
         }
-    }, [errorMessage, closeModal])
+    }, [errorMessage, closeModal]);
     const handleResultClick = () => {
         if (newLink) {
-            navigator.clipboard.writeText(newLinkFullValue)
-            setMessage(finishMessage)
+            navigator.clipboard.writeText(newLinkFullValue);
+            setMessage(finishMessage);
         }
-    }
+    };
     useEffect(() => {
-        if (newLink) setMessage(resultMessage)
-    }, [newLink])
+        if (newLink) setMessage(resultMessage);
+    }, [newLink]);
     return (
         <Modal closeModal={closeModal} title={"Здесь режут ссылки"}>
             <form onSubmit={handleFormSubmit} className={styles.form}>

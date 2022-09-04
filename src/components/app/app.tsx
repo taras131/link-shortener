@@ -6,13 +6,13 @@ import {getIsShowLinkModal} from "../../store/link/selector";
 import "./app.css";
 
 const App:FC = () => {
-    const isShowLinkModal = useAppSelector(state => getIsShowLinkModal(state))
+    const isShowLinkModal = useAppSelector(state => getIsShowLinkModal(state));
     return (
         <div className="App">
             <Router/>
             {isShowLinkModal && (<CreateLinkModal/>)}
         </div>
     );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import styles from "./input.module.scss"
+import styles from "./input.module.scss";
 
 interface IInput {
     name: string,
@@ -17,7 +17,7 @@ interface IInput {
 const Input: FC<IInput> = ({
                                name, labelName, value, onChange,
                                error, placeholder, min,
-                               max, type, autofocus = false
+                               max, type, autofocus = false,
                            }) => {
     return (
         <div className={styles.container}>

@@ -1,13 +1,13 @@
 import React, {FC} from "react";
 import HeaderLink from "../../atoms/header-link/header-link";
-import styles from './header.module.scss';
+import styles from "./header.module.scss";
 import {useAppSelector} from "../../../hooks/redux";
 import {getIsAuth} from "../../../store/auth/selector";
 import routes from "../../../config/routes";
 
 const Header: FC = () => {
     const {main, register, login, profile} = routes;
-    const isAuth = useAppSelector(state => getIsAuth(state))
+    const isAuth = useAppSelector(state => getIsAuth(state));
     return (
         <header className={styles.wrapper}>
             <nav className={styles.container}>

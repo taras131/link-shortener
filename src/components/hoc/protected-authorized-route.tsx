@@ -9,9 +9,9 @@ interface IProtectedAuthorizedRoute {
 }
 
 const ProtectedAuthorizedRoute: FC<IProtectedAuthorizedRoute> = ({children}) => {
-    const isAuth = useAppSelector(state => getIsAuth(state))
+    const isAuth = useAppSelector(state => getIsAuth(state));
     const {login} = routes;
-    if (!isAuth) return (<Navigate to={login.path}/>)
+    if (!isAuth) return (<Navigate to={login.path}/>);
     return children;
 };
 

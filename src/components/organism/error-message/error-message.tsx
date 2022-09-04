@@ -9,7 +9,7 @@ interface IErrorMessage {
 const ErrorMessage: FC<IErrorMessage> = ({errorMessage}) => {
     const handleReloadClick = () => {
         window.location.reload();
-    }
+    };
     return (
         <div className={styles.wrapper}>
             <h3>Произошла ошибка!</h3>

@@ -14,32 +14,32 @@ import useFormWithValidation from "../../../hooks/useFormWithValidation";
 const initialValues = {
     username: "",
     password: "",
-}
+};
 const initialErrors = {
     username: "",
     password: "",
-}
+};
 
 const Auth: FC = () => {
     const {login, register} = routes;
     const {pathname} = useLocation();
-    const dispatch = useAppDispatch()
-    const infoMessage = useAppSelector(state => getInfoMessage(state))
-    const isAuthLoading = useAppSelector(state => getAuthIsLoading(state))
-    const isLogin = pathname === login.path
+    const dispatch = useAppDispatch();
+    const infoMessage = useAppSelector(state => getInfoMessage(state));
+    const isAuthLoading = useAppSelector(state => getAuthIsLoading(state));
+    const isLogin = pathname === login.path;
     const {handleChange, isValid, errors, values} =
         useFormWithValidation(initialValues, initialErrors);
     const handleSubmit = (e: React.FormEvent<EventTarget>) => {
-        e.preventDefault()
+        e.preventDefault();
         if (isLogin) {
-            dispatch(loginThunk(values))
+            dispatch(loginThunk(values));
         } else {
-            dispatch(registrationThunk(values))
+            dispatch(registrationThunk(values));
         }
-    }
+    };
     useEffect(() => {
-        dispatch(resetInfoMessage())
-    }, [pathname, dispatch])
+        dispatch(resetInfoMessage());
+    }, [pathname, dispatch]);
     return (
         <div className={styles.form_wrapper}>
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -65,11 +65,14 @@ const Auth: FC = () => {
                            min={4}
                            max={20}/>
                     <p className={classNames(styles.message, {
-                        [styles.positive_message]: infoMessage.isPositive
+                        [styles.positive_message]: infoMessage.isPositive,
                     })}>{infoMessage.message}</p>
                     <Button text={isLogin ? "Войти" : "Зарегистрироваться"}
                             handleClick={handleSubmit}
-                            isDisable={!isValid || values.username.length < 2 || values.username.password < 2 || isAuthLoading}/>
+                            isDisable={!isValid
+                            || values.username.length < 2
+                            || values.username.password < 2
+                            || isAuthLoading}/>
                     <span>
                         {isLogin
                             ? (<p>

@@ -13,30 +13,30 @@ import {
     getLimit, getNewLink,
     getOffset,
     getOrder,
-    getThereIsNextPage
+    getThereIsNextPage,
 } from "../../../store/link/selector";
 
 const TableLinks: FC = () => {
-    const dispatch = useAppDispatch()
-    const links = useAppSelector(state => getAllLinks(state))
-    const offset = useAppSelector(state => getOffset(state))
-    const limit = useAppSelector(state => getLimit(state))
-    const isThereNextPage = useAppSelector(state => getThereIsNextPage(state))
-    const order = useAppSelector(state => getOrder(state))
-    const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
-    const newLink = useAppSelector(state => getNewLink(state))
+    const dispatch = useAppDispatch();
+    const links = useAppSelector(state => getAllLinks(state));
+    const offset = useAppSelector(state => getOffset(state));
+    const limit = useAppSelector(state => getLimit(state));
+    const isThereNextPage = useAppSelector(state => getThereIsNextPage(state));
+    const order = useAppSelector(state => getOrder(state));
+    const isLinkLoading = useAppSelector(state => getIsLinkLoading(state));
+    const newLink = useAppSelector(state => getNewLink(state));
     useEffect(() => {
-        dispatch(getLinks({offset: offset, limit: limit + 1, order: order}))
-    }, [dispatch, offset, order, limit, newLink])
-    const linksList = links.map((item, index) => <Link index ={index} {...item}
-                                                       key={item.id} offset={offset}/>)
+        dispatch(getLinks({offset: offset, limit: limit + 1, order: order}));
+    }, [dispatch, offset, order, limit, newLink]);
+    const linksList = links.map((item, index) => <Link index={index} {...item}
+                                                       key={item.id} offset={offset}/>);
     const handleNextClick = () => {
-        dispatch(showNext())
-    }
+        dispatch(showNext());
+    };
     const handlePreviousClick = () => {
-        dispatch(showPrevious())
-    }
-    if (linksList.length === 0) return (<p className={styles.empty_links_tab}>У вас пока нет ссылок</p>)
+        dispatch(showPrevious());
+    };
+    if (linksList.length === 0) return (<p className={styles.empty_links_tab}>У вас пока нет ссылок</p>);
     return (
         <section>
             <Sort/>
@@ -67,9 +67,7 @@ const TableLinks: FC = () => {
                     </div>
                 </>
             )}
-
         </section>
-
     );
 };
 

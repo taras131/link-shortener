@@ -8,21 +8,21 @@ import {getLimit} from "../../../store/link/selector";
 import {LIMIT_VARIANTS} from "../../../config/constants";
 
 const SetLimit: FC = () => {
-    const dispatch = useAppDispatch()
-    const currentLimit = useAppSelector(state => getLimit(state))
+    const dispatch = useAppDispatch();
+    const currentLimit = useAppSelector(state => getLimit(state));
     const variantList = LIMIT_VARIANTS.map(item => {
         const handleVariantSelected = () => {
-            dispatch(setLimit(item))
-        }
+            dispatch(setLimit(item));
+        };
         return (
             <span onClick={handleVariantSelected}
                   key={item}
                   className={classNames({
-                      [styles.active]: currentLimit === item
+                      [styles.active]: currentLimit === item,
                   })}>
                {item}
-           </span>)
-    })
+           </span>);
+    });
     return (
         <Card>
             <p>На странице</p>

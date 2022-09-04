@@ -34,6 +34,19 @@ npm run build
 npm run test
 ```
 
+- запуск eslint
+
+```bash
+npx eslint .
+```
+
+- запуск eslint--fix
+
+```bash
+npx eslint --fix .
+```
+
+
 ## Деплой:
 Из-за смешанного контента при деплое перестают работать запросы на сервер (https у деплоя http у сервера)
 - https://link-ruby.vercel.app/
