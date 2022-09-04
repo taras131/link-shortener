@@ -28,14 +28,15 @@ const TableLinks: FC = () => {
     useEffect(() => {
         dispatch(getLinks({offset: offset, limit: limit + 1, order: order}))
     }, [dispatch, offset, order, limit, newLink])
-    const linksList = links.map(item => <Link {...item} key={item.id}/>)
+    const linksList = links.map((item, index) => <Link index ={index} {...item}
+                                                       key={item.id} offset={offset}/>)
     const handleNextClick = () => {
         dispatch(showNext())
     }
     const handlePreviousClick = () => {
         dispatch(showPrevious())
     }
-    if (linksList.length === 0) return (<p>У вас пока нет ссылок</p>)
+    if (linksList.length === 0) return (<p className={styles.empty_links_tab}>У вас пока нет ссылок</p>)
     return (
         <section>
             <Sort/>
@@ -46,6 +47,7 @@ const TableLinks: FC = () => {
                         <caption>История сокращений. Кликнете по ссылке чтобы скопировать.</caption>
                         <thead>
                         <tr>
+                            <th className={styles.number}>№</th>
                             <th>Ссылка</th>
                             <th>Пос<span>ещения</span></th>
                             <th className={styles.target}>Исходный материал</th>
