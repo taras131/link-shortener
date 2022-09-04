@@ -15,7 +15,6 @@ export const getAccessToken = () => {
 }
 export const handleResponse = async (response: any) => {
     const decodedResponse = await response.json()
-    console.log(decodedResponse)
     if (response.ok) {
         return decodedResponse
     } else {
