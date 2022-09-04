@@ -53,7 +53,8 @@ const Auth: FC = () => {
                            error={errors.username.split(".")[0]}
                            onChange={handleChange}
                            min={2}
-                           max={20}/>
+                           max={20}
+                           autofocus={true}/>
                     <Input name={"password"}
                            labelName={"Пароль:"}
                            placeholder={"Не менее 4 символов"}

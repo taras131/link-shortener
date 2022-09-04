@@ -12,12 +12,12 @@ const Profile: FC = () => {
         dispatch(exit())
     }
     return (
-        <div className={styles.wrapper}>
+        <figure className={styles.wrapper}>
             <img src="https://placepic.ru/wp-content/uploads/2021/02/kinopoisk_ru_Brad_Pi-41.jpg" alt="avatar"
                  className={styles.avatar}/>
-            Profile
+            <figcaption>Profile</figcaption>
             <Button text={"Выйти"} handleClick={handleExitClick} isDisable={false}/>
-        </div>
+        </figure>
     );
 };
 

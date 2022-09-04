@@ -18,10 +18,11 @@ const Main: FC = () => {
         <main className={styles.main}>
             <div className={styles.container}>
                 <section className={styles.header}>
-                    <div className={styles.title_container}>
+                    <h1>Сервис по созданию коротких ссылок</h1>
+                    <blockquote className={styles.title_container}>
                         <p className={styles.title}>Краткость</p>
                         <p className={styles.subtitle}>-cестра таланта</p>
-                    </div>
+                    </blockquote>
                     <Button text={"Укоротить"} isDisable={false} handleClick={handleCreateLinkClick}/>
                 </section>
                 <TableLinks/>

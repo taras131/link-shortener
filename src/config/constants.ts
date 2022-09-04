@@ -5,6 +5,7 @@ export const FETCH_LOGIN_PATH = "/login";
 export const FETCH_REGISTER_PATH = "/register";
 export const FETCH_SQUEEZE_PATH = "/squeeze";
 export const FETCH_STATISTICS_PATH = "/statistics"
+export const FETCH_REDIRECT_PATH = "/s"
 export const FETCH_APPLICATION_HEADER ="application/json";
 export const FETCH_X_FORM_HEADER ="application/x-www-form-urlencoded;charset=UTF-8";
 export const BEARER_TOKEN_HEADER = 'Bearer ';

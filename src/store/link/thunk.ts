@@ -16,7 +16,7 @@ export const squeezeLink = createAsyncThunk(
 )
 
 export const getLinks = createAsyncThunk(
-    'link/get all',
+    'link/get_all',
     async (parameters: IParameters, ThunkAPI) => {
         try {
             const res = await fetchGetLinks(parameters)

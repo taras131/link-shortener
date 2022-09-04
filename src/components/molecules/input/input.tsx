@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC} from "react";
 import styles from "./input.module.scss"
 
 interface IInput {
@@ -10,13 +10,14 @@ interface IInput {
     type: "text" | "password",
     min: number,
     max: number,
+    autofocus?: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: FC<IInput> = ({
                                name, labelName, value, onChange,
                                error, placeholder, min,
-                               max, type
+                               max, type, autofocus = false
                            }) => {
     return (
         <div className={styles.container}>
@@ -28,7 +29,8 @@ const Input: FC<IInput> = ({
                    onChange={onChange}
                    placeholder={placeholder}
                    minLength={min}
-                   maxLength={max}/>
+                   maxLength={max}
+                   autoFocus={autofocus}/>
             <span className={styles.error}>{error}</span>
         </div>
     );

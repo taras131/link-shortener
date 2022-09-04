@@ -1,15 +1,36 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import styles from "./link.module.scss"
 import {ILink} from "../../../models/i-link";
+import classNames from "classnames";
+import {FETCH_REDIRECT_PATH} from "../../../config/constants";
 
-const Link: FC<ILink> = ({counter, id, short, target}) => {
-    const url = process.env.REACT_APP_API_URL + "/s/" + short
+interface ILinkComponent extends ILink {
+    index: number,
+    offset: number
+}
+
+const messageHelp = "Кликнете чтобы скопировать"
+const messageSuccess = "Скопировано"
+
+const Link: FC<ILinkComponent> = ({counter, id, short, target, index, offset}) => {
+    const url = `${process.env.REACT_APP_API_URL + FETCH_REDIRECT_PATH}/${short}`
+    const [message, setMessage] = useState<string>(messageHelp)
     const handleShortClick = () => {
         navigator.clipboard.writeText(url)
+        setMessage(messageSuccess)
+        setTimeout(() => {
+            setMessage(messageHelp)
+        }, 3000)
     }
     return (
         <tr>
+            <td className={styles.number}>{index + 1 + offset}</td>
             <td className={styles.short} onClick={handleShortClick}>
+                <p className={classNames(styles.help, {
+                    [styles.success]: message === messageSuccess
+                })}>
+                    {message}
+                </p>
                 {url}
             </td>
             <td className={styles.count}>{counter}</td>

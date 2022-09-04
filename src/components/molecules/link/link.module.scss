@@ -1,6 +1,36 @@
+@use "src/styles/color-variables" as vars;
+@use "src/styles/sizes-variable" as size-vars;
+
+.number {
+  width: 5%;
+}
+
 .short {
   cursor: pointer;
   width: 15%;
+  position: relative;
+}
+
+.help {
+  position: absolute;
+  color: vars.$white;
+  background-color: vars.$dark_primary;
+  padding: 7px;
+  border-radius: size-vars.$border-radius;
+  font-size: 14px;
+  display: none;
+  z-index: 1000;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-45px);
+}
+
+.short:hover .help {
+  display: block;
+}
+
+.success {
+  background-color: vars.$green;
 }
 
 .short:hover {
@@ -19,6 +49,16 @@
 
 @media (max-width: 550px) {
   .target {
+    display: none;
+  }
+  .short:hover .help {
+    display: none;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .number {
     display: none;
   }
 }

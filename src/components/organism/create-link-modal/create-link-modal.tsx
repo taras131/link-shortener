@@ -8,6 +8,7 @@ import {toggleShowLinkModal} from "../../../store/link";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {squeezeLink} from "../../../store/link/thunk";
 import {getErrorMessage, getIsLinkLoading, getNewLink} from "../../../store/link/selector";
+import {FETCH_REDIRECT_PATH} from "../../../config/constants";
 
 
 const startMessage = "Вставьте ссылку в поле ниже"
@@ -20,7 +21,7 @@ const CreateLinkModal: FC = () => {
     const [message, setMessage] = useState(startMessage)
     const dispatch = useAppDispatch()
     const newLink = useAppSelector(state => getNewLink(state))
-    const newLinkFullValue = `${process.env.REACT_APP_API_URL}/s/${newLink}`
+    const newLinkFullValue = `${process.env.REACT_APP_API_URL+FETCH_REDIRECT_PATH}/${newLink}`
     const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
     const errorMessage = useAppSelector(state => getErrorMessage(state))
     const linkValidation = (link: string): boolean => {

@@ -16,6 +16,9 @@
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  & h1 {
+    display: none;
+  }
 }
 
 .title_container {

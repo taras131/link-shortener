@@ -4,24 +4,26 @@
   border-collapse: collapse;
   width: 100%;
   margin-top: 15px;
+  & caption {
+    margin: 10px;
+  }
+  & th {
+    padding: 10px;
+    color: vars.$white;
+    background-color: vars.$primary;
+  }
+  & tr:nth-child(2n+2) {
+    background-color: vars.$table_row;
+  }
+  & td {
+    padding: 10px;
+  }
 }
 
-.table caption {
-  margin: 10px;
-}
-
-.table th {
-  padding: 10px;
-  color: vars.$white;
-  background-color: vars.$primary;
-}
-
-.table tr:nth-child(2n+2) {
-  background-color: vars.$table_row;
-}
-
-.table td {
-  padding: 10px;
+.empty_links_tab {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 50px;
 }
 
 .pagination_buttons {
@@ -34,6 +36,12 @@
   gap: 10px;
 }
 
+@media (max-width: 750px) {
+  .table th span {
+    display: none;
+  }
+}
+
 @media (max-width: 550px) {
   .target {
     display: none;
@@ -42,7 +50,10 @@
     padding: 5px;
     overflow: hidden;
   }
-  .table th span {
+}
+
+@media (max-width: 420px) {
+  .number {
     display: none;
   }
 }
