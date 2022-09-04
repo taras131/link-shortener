@@ -49,7 +49,7 @@ npx eslint --fix .
 
 ## Деплой:
 Из-за смешанного контента при деплое перестают работать запросы на сервер (https у деплоя http у сервера)
-- https://link-ruby.vercel.app/
+- https://shortener-taras131.vercel.app/login
 - https://superlative-piroshki-7ba3e6.netlify.app/
 
 ## CI:
