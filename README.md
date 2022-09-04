@@ -35,8 +35,14 @@ npm run test
 ```
 
 ## Деплой:
-- https://link-ruby.vercel.app/
 Из-за смешанного контента при деплое перестают работать запросы на сервер (https у деплоя http у сервера)
+- https://link-ruby.vercel.app/
+- https://superlative-piroshki-7ba3e6.netlify.app/
+
+## CI:
+При создании pull request и merge в main прогоняется:
+- билд приложения
+- unit тесты слайсов
 
 ## Документация по бекенду:
 - http://79.143.31.216/docs

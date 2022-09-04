@@ -20,6 +20,7 @@ const CreateLinkModal: FC = () => {
     const [message, setMessage] = useState(startMessage)
     const dispatch = useAppDispatch()
     const newLink = useAppSelector(state => getNewLink(state))
+    const newLinkFullValue = `${process.env.REACT_APP_API_URL}/s/${newLink}`
     const isLinkLoading = useAppSelector(state => getIsLinkLoading(state))
     const errorMessage = useAppSelector(state => getErrorMessage(state))
     const linkValidation = (link: string): boolean => {
@@ -51,7 +52,7 @@ const CreateLinkModal: FC = () => {
     }, [errorMessage, closeModal])
     const handleResultClick = () => {
         if (newLink) {
-            navigator.clipboard.writeText(process.env.REACT_APP_API_URL + "/s/" + newLink.short)
+            navigator.clipboard.writeText(newLinkFullValue)
             setMessage(finishMessage)
         }
     }
@@ -61,11 +62,12 @@ const CreateLinkModal: FC = () => {
     return (
         <Modal closeModal={closeModal} title={"Здесь режут ссылки"}>
             <form onSubmit={handleFormSubmit} className={styles.form}>
+                <p>{message}</p>
                 {newLink && (
                     <>
                         <p className={styles.result_content}
                            onClick={handleResultClick}>
-                            {process.env.REACT_APP_API_URL + "/s/" + newLink.short}
+                            {newLinkFullValue}
                         </p>
                         <Button text={"Спасибо"} isDisable={false} handleClick={closeModal}/>
                     </>
@@ -77,7 +79,7 @@ const CreateLinkModal: FC = () => {
                                name={"link"}
                                onChange={handleChange}
                                type={"text"}
-                               labelName={message}
+                               labelName={""}
                                error={""}
                                min={1}
                                max={65536}/>

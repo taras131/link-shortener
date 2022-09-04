@@ -10,7 +10,7 @@ export interface ILinkState {
     order: IOrder,
     offset: number,
     limit: number,
-    newLink: ILink | null,
+    newLink: string | null,
     links: ILink[],
     thereIsNextPage: boolean,
 }
@@ -54,7 +54,7 @@ const link = createSlice({
         }
     },
     extraReducers: {
-        [squeezeLink.fulfilled.type]: (state, action: PayloadAction<ILink>) => {
+        [squeezeLink.fulfilled.type]: (state, action: PayloadAction<string>) => {
             state.newLink = action.payload
             state.isLoading = false;
         },

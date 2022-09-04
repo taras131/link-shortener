@@ -1,29 +1,30 @@
 import {RootState} from "../store";
+import {ILink, IOrder} from "../../models/i-link";
 
-export const getAllLinks = (state: RootState) => {
+export const getAllLinks = (state: RootState): ILink [] => {
     return state.link.links
 }
-export const getNewLink = (state: RootState) => {
+export const getNewLink = (state: RootState): string | null => {
     return state.link.newLink
 }
-export const getIsShowLinkModal = (state: RootState) => {
+export const getIsShowLinkModal = (state: RootState): boolean => {
     return state.link.isShowLinkModal
 }
-export const getOrder = (state: RootState) => {
+export const getOrder = (state: RootState): IOrder => {
     return state.link.order
 }
-export const getOffset = (state: RootState) => {
+export const getOffset = (state: RootState): number => {
     return state.link.offset
 }
-export const getLimit = (state: RootState) => {
+export const getLimit = (state: RootState): number => {
     return state.link.limit
 }
-export const getThereIsNextPage = (state: RootState) => {
+export const getThereIsNextPage = (state: RootState): boolean => {
     return state.link.thereIsNextPage
 }
-export const getIsLinkLoading =(state: RootState) => {
+export const getIsLinkLoading = (state: RootState): boolean => {
     return state.link.isLoading
 }
-export const getErrorMessage =(state: RootState) => {
+export const getErrorMessage = (state: RootState): string => {
     return state.link.errorMessage
 }
