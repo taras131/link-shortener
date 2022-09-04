@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
+import classNames from "classnames";
 import styles from "./link.module.scss"
 import {ILink} from "../../../models/i-link";
-import classNames from "classnames";
 import {FETCH_REDIRECT_PATH} from "../../../config/constants";
 
 interface ILinkComponent extends ILink {

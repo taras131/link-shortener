@@ -18,15 +18,17 @@
   padding: 7px;
   border-radius: size-vars.$border-radius;
   font-size: 14px;
-  display: none;
   z-index: 1000;
   top: 50%;
   left: -10px;
-  transform: translateY(-45px);
+  opacity: 0;
+  transform: translateY(-35px);
+  transition: opacity 0.3s, transform 0.4s;
 }
 
 .short:hover .help {
-  display: block;
+  opacity: .9;
+  transform: translateY(-45px);
 }
 
 .success {
