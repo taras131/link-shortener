@@ -13,7 +13,7 @@ const HeaderLink: FC<IHeaderLink> = ({path, title}) => {
     return (
         <li>
             <Link to={path} className={classNames(styles.link, {
-                [styles.active]: pathname === path
+                [styles.active]: pathname === path,
             })}>
                 {title}
             </Link>

@@ -6,11 +6,11 @@ import {exit} from "../../../store/auth";
 import {cleanLocalStorage} from "../../../utils/services";
 
 const Profile: FC = () => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     const handleExitClick = () => {
-        cleanLocalStorage()
-        dispatch(exit())
-    }
+        cleanLocalStorage();
+        dispatch(exit());
+    };
     return (
         <figure className={styles.wrapper}>
             <img src="https://placepic.ru/wp-content/uploads/2021/02/kinopoisk_ru_Brad_Pi-41.jpg" alt="avatar"

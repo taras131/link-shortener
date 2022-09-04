@@ -8,6 +8,6 @@ const NotFound: FC = () => {
             <p>Страница не найдена</p>
         </div>
     );
-}
+};
 
 export default NotFound;

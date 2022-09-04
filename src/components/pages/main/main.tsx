@@ -2,18 +2,18 @@ import React, {FC} from "react";
 import TableLinks from "../../organism/table-links/table-links";
 import Button from "../../atoms/button/button";
 import ErrorMessage from "../../organism/error-message/error-message";
-import styles from "./main.module.scss"
+import styles from "./main.module.scss";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {toggleShowLinkModal} from "../../../store/link";
 import {getErrorMessage} from "../../../store/link/selector";
 
 const Main: FC = () => {
-    const dispatch = useAppDispatch()
-    const errorMessage = useAppSelector(state => getErrorMessage(state))
+    const dispatch = useAppDispatch();
+    const errorMessage = useAppSelector(state => getErrorMessage(state));
     const handleCreateLinkClick = () => {
-        dispatch(toggleShowLinkModal())
-    }
-    if (errorMessage) return (<ErrorMessage errorMessage={errorMessage}/>)
+        dispatch(toggleShowLinkModal());
+    };
+    if (errorMessage) return (<ErrorMessage errorMessage={errorMessage}/>);
     return (
         <main className={styles.main}>
             <div className={styles.container}>

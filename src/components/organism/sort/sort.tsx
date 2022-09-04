@@ -7,7 +7,7 @@ import {getOrder} from "../../../store/link/selector";
 import {sortVariants} from "../../../config/constants";
 
 const Sort: FC = React.memo(() => {
-    const order = useAppSelector(state => getOrder(state))
+    const order = useAppSelector(state => getOrder(state));
     return (
         <div className={styles.wrapper}>
             <SetLimit/>

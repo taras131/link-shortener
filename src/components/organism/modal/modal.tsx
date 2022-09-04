@@ -9,15 +9,15 @@ type TModal = {
     children?: React.ReactNode
 }
 const modalRoot = document.getElementById("react-modals");
-const Modal: FC<TModal> = ({title = '', closeModal, children}) => {
+const Modal: FC<TModal> = ({title = "", closeModal, children}) => {
     const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') closeModal()
-    }, [closeModal])
+        if (e.key === "Escape") closeModal();
+    }, [closeModal]);
     useEffect(() => {
-        document.addEventListener('keydown', onKeyDown)
-        return () => document.removeEventListener('keydown', onKeyDown)
-    }, [onKeyDown])
-    if (!modalRoot) return (<div></div>)
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    }, [onKeyDown]);
+    if (!modalRoot) return (<div></div>);
     return ReactDOM.createPortal(
         <>
             <div className={styles.content}
@@ -29,7 +29,7 @@ const Modal: FC<TModal> = ({title = '', closeModal, children}) => {
                 {children}
             </div>
             <ModalOverlay closeModal={closeModal}/>
-        </>, modalRoot)
+        </>, modalRoot);
 };
 
 export default Modal;

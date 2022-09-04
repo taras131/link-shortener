@@ -12,10 +12,10 @@ interface ITag {
 }
 
 const Tag: FC<ITag> = ({name, activeValue, value}) => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     const handleClick = () => {
-        dispatch(setOrder({name, value}))
-    }
+        dispatch(setOrder({name, value}));
+    };
     return (
         <div className={classNames(styles.wrapper, {
             [styles.active]: value === activeValue,

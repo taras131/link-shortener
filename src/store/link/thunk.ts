@@ -4,25 +4,25 @@ import {handlerError} from "../../utils/services";
 import {fetchSqueezeLink, fetchGetLinks} from "../../api/api-link";
 
 export const squeezeLink = createAsyncThunk(
-    'link/create',
+    "link/create",
     async (link: string, ThunkAPI) => {
         try {
-            const res = await fetchSqueezeLink(link)
-            return res
+            const res = await fetchSqueezeLink(link);
+            return res;
         } catch (e) {
-            return ThunkAPI.rejectWithValue(handlerError(e))
+            return ThunkAPI.rejectWithValue(handlerError(e));
         }
-    }
-)
+    },
+);
 
 export const getLinks = createAsyncThunk(
-    'link/get_all',
+    "link/get_all",
     async (parameters: IParameters, ThunkAPI) => {
         try {
-            const res = await fetchGetLinks(parameters)
-            return res
+            const res = await fetchGetLinks(parameters);
+            return res;
         } catch (e) {
-            return ThunkAPI.rejectWithValue(handlerError(e))
+            return ThunkAPI.rejectWithValue(handlerError(e));
         }
-    }
-)
+    },
+);

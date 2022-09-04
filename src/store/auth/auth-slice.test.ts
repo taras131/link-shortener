@@ -6,19 +6,19 @@ const state:IAuthState  = {
     isLoading: false,
     infoMessage: {
         isPositive: true,
-        message: "error"
-    }
-}
+        message: "error",
+    },
+};
 describe.only("Redux auth slice", () => {
     test("Should be return the initial state", () => {
-        expect(reducer(undefined, {} as AnyAction)).toEqual(initialState)
-    })
+        expect(reducer(undefined, {} as AnyAction)).toEqual(initialState);
+    });
     test("Should be isAuth is false", () => {
-        const newState = reducer(state, exit)
+        const newState = reducer(state, exit);
         expect(newState.isAuth).toEqual(false);
-    })
+    });
     test("Should be infoMessage equal initialInfoMessage", () => {
-        const newState = reducer(state, resetInfoMessage)
+        const newState = reducer(state, resetInfoMessage);
         expect(newState.infoMessage.message).toEqual("");
-    })
-})
+    });
+});
