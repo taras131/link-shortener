@@ -6,7 +6,7 @@ import {useAppSelector} from "../../../hooks/redux";
 import {getOrder} from "../../../store/link/selector";
 import {sortVariants} from "../../../config/constants";
 
-const Sort: FC = () => {
+const Sort: FC = React.memo(() => {
     const order = useAppSelector(state => getOrder(state))
     return (
         <div className={styles.wrapper}>
@@ -18,6 +18,6 @@ const Sort: FC = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Sort;

@@ -35,33 +35,39 @@ const TableLinks: FC = () => {
     const handlePreviousClick = () => {
         dispatch(showPrevious())
     }
-    if (isLinkLoading) return (<Preloader/>)
     if (linksList.length === 0) return (<p>У вас пока нет ссылок</p>)
     return (
         <section>
             <Sort/>
-            <table className={styles.table}>
-                <caption>История сокращений. Кликнете по ссылке чтобы скопировать.</caption>
-                <thead>
-                <tr>
-                    <th>Ссылка</th>
-                    <th>Пос<span>ещения</span></th>
-                    <th className={styles.target}>Исходный материал</th>
-                </tr>
-                </thead>
-                <tbody>
-                {linksList}
-                </tbody>
-            </table>
-            <div className={styles.pagination_buttons}>
-                <Button text={"Предыдущая"}
-                        isDisable={offset === 0}
-                        handleClick={handlePreviousClick}/>
-                <Button text={"Следующая"}
-                        isDisable={!isThereNextPage}
-                        handleClick={handleNextClick}/>
-            </div>
+            {isLinkLoading && (<Preloader/>)}
+            {!isLinkLoading && (
+                <>
+                    <table className={styles.table}>
+                        <caption>История сокращений. Кликнете по ссылке чтобы скопировать.</caption>
+                        <thead>
+                        <tr>
+                            <th>Ссылка</th>
+                            <th>Пос<span>ещения</span></th>
+                            <th className={styles.target}>Исходный материал</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {linksList}
+                        </tbody>
+                    </table>
+                    <div className={styles.pagination_buttons}>
+                        <Button text={"Предыдущая"}
+                                isDisable={offset === 0}
+                                handleClick={handlePreviousClick}/>
+                        <Button text={"Следующая"}
+                                isDisable={!isThereNextPage}
+                                handleClick={handleNextClick}/>
+                    </div>
+                </>
+            )}
+
         </section>
+
     );
 };
 

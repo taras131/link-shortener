@@ -10,8 +10,13 @@
     cursor: pointer;
     color: vars.$primary;
   }
+
+  & span:hover {
+    text-shadow: 0 0 2px;
+  }
 }
 
 .active {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
