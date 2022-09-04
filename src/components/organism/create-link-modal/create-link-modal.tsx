@@ -24,7 +24,7 @@ const CreateLinkModal: FC = () => {
     const errorMessage = useAppSelector(state => getErrorMessage(state))
     const linkValidation = (link: string): boolean => {
         try {
-            let url = new URL(link);
+            new URL(link);
             return true
         } catch (_) {
             setMessage(errorValidateLinkMessage)
