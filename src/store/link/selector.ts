@@ -1,5 +1,6 @@
 import {RootState} from "../store";
 import {ILink, IOrder} from "../../models/i-link";
+import {orderValuesVariants, sortVariants} from "../../config/constants";
 
 export const getAllLinks = (state: RootState): ILink [] => {
     return state.link.links;
@@ -12,6 +13,9 @@ export const getIsShowLinkModal = (state: RootState): boolean => {
 };
 export const getOrder = (state: RootState): IOrder => {
     return state.link.order;
+};
+export const getOrderValueByName = (state: RootState, name: sortVariants): orderValuesVariants => {
+    return state.link.order[name];
 };
 export const getOffset = (state: RootState): number => {
     return state.link.offset;

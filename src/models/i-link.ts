@@ -7,9 +7,9 @@ export interface ILink {
     target: number
 }
 export interface IOrder {
-    short: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
-    counter: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
-    target: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc
+    short: orderValuesVariants,
+    counter: orderValuesVariants,
+    target: orderValuesVariants,
 }
 export interface IParameters {
     offset: number,

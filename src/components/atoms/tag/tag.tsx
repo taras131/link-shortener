@@ -6,9 +6,9 @@ import {useAppDispatch} from "../../../hooks/redux";
 import {orderValuesVariants, sortVariants} from "../../../config/constants";
 
 interface ITag {
-    name: sortVariants.target | sortVariants.counter | sortVariants.short,
-    value: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc,
-    activeValue: orderValuesVariants.not | orderValuesVariants.asc | orderValuesVariants.desc
+    name: sortVariants,
+    value: orderValuesVariants,
+    activeValue: orderValuesVariants
 }
 
 const Tag: FC<ITag> = ({name, activeValue, value}) => {
