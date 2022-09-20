@@ -11,7 +11,7 @@ interface ITag {
     activeValue: orderValuesVariants
 }
 
-const Tag: FC<ITag> = React.memo(({name, activeValue, value}) => {
+const Tag: FC<ITag> = ({name, activeValue, value}) => {
 
     const dispatch = useAppDispatch();
     const handleClick = () => {
@@ -26,6 +26,6 @@ const Tag: FC<ITag> = React.memo(({name, activeValue, value}) => {
              onClick={handleClick}>
         </div>
     );
-});
+};
 
 export default Tag;

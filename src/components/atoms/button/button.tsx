@@ -7,7 +7,7 @@ interface IButton {
     handleClick: (e: React.MouseEvent<HTMLElement>) => void
 }
 
-const Button: FC<IButton> = React.memo(({text, handleClick, isDisable}) => {
+const Button: FC<IButton> = ({text, handleClick, isDisable}) => {
     return (
         <button className={styles.button}
                 onClick={handleClick}
@@ -15,6 +15,6 @@ const Button: FC<IButton> = React.memo(({text, handleClick, isDisable}) => {
             {text}
         </button>
     );
-});
+};
 
 export default Button;
