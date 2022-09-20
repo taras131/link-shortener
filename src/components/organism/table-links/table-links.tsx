@@ -1,5 +1,7 @@
 import React, {FC, useCallback, useEffect} from "react";
 import Button from "../../atoms/button/button";
+import LinksList from "../links-list/links-list";
+import EmptyLinksList from "../../molecules/empty-links-list/empty-links-list";
 import Sort from "../sort/sort";
 import Preloader from "../../templates/preloader/preloader";
 import styles from "./table-links.module.scss";
@@ -14,8 +16,6 @@ import {
     getOrder,
     getThereIsNextPage,
 } from "../../../store/link/selector";
-import LinksList from "../links-list/links-list";
-import EmptyLinksList from "../../molecules/empty-links-list/empty-links-list";
 
 const TableLinks: FC = () => {
     const dispatch = useAppDispatch();
