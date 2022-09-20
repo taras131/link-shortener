@@ -12,7 +12,6 @@ interface ITag {
 }
 
 const Tag: FC<ITag> = ({name, activeValue, value}) => {
-
     const dispatch = useAppDispatch();
     const handleClick = () => {
         dispatch(setOrder({name, value}));
