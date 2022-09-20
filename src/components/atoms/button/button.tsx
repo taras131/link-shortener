@@ -8,7 +8,6 @@ interface IButton {
 }
 
 const Button: FC<IButton> = React.memo(({text, handleClick, isDisable}) => {
-    console.log(text)
     return (
         <button className={styles.button}
                 onClick={handleClick}

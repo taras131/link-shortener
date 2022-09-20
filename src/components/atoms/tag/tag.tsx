@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from "react";
+import React, {FC} from "react";
 import classNames from "classnames";
 import styles from "./tag.module.scss";
 import {setOrder} from "../../../store/link";
