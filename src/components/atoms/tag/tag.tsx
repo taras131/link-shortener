@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useCallback} from "react";
 import classNames from "classnames";
 import styles from "./tag.module.scss";
 import {setOrder} from "../../../store/link";
@@ -11,7 +11,8 @@ interface ITag {
     activeValue: orderValuesVariants
 }
 
-const Tag: FC<ITag> = ({name, activeValue, value}) => {
+const Tag: FC<ITag> = React.memo(({name, activeValue, value}) => {
+
     const dispatch = useAppDispatch();
     const handleClick = () => {
         dispatch(setOrder({name, value}));
@@ -25,6 +26,6 @@ const Tag: FC<ITag> = ({name, activeValue, value}) => {
              onClick={handleClick}>
         </div>
     );
-};
+});
 
 export default Tag;

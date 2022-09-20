@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useCallback} from "react";
 import TableLinks from "../../organism/table-links/table-links";
 import Button from "../../atoms/button/button";
 import ErrorMessage from "../../organism/error-message/error-message";
@@ -10,9 +10,9 @@ import {getErrorMessage} from "../../../store/link/selector";
 const Main: FC = () => {
     const dispatch = useAppDispatch();
     const errorMessage = useAppSelector(state => getErrorMessage(state));
-    const handleCreateLinkClick = () => {
+    const handleCreateLinkClick = useCallback(() => {
         dispatch(toggleShowLinkModal());
-    };
+    },[toggleShowLinkModal]);
     if (errorMessage) return (<ErrorMessage errorMessage={errorMessage}/>);
     return (
         <main className={styles.main}>

@@ -10,7 +10,7 @@ interface ISortItem {
     name: sortVariants,
 }
 
-const SortItem: FC<ISortItem> = ({name}) => {
+const SortItem: FC<ISortItem> = React.memo(({name}) => {
     const activeValue = useAppSelector(state => getOrderValueByName(state, name));
     return (
         <Card>
@@ -22,6 +22,6 @@ const SortItem: FC<ISortItem> = ({name}) => {
             </div>
         </Card>
     );
-};
+});
 
 export default SortItem;

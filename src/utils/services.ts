@@ -1,6 +1,7 @@
 import {ACCESS_TOKEN, UNKNOWN_ERROR_MESSAGE} from "../config/constants";
 
-// пока не нашёл как типизировать
+const firstDetail = 0;
+
 export const handlerError = (e: any) => {
     if (e instanceof Error && e.message) return e.message;
     return UNKNOWN_ERROR_MESSAGE;
@@ -19,7 +20,9 @@ export const handleResponse = async (response: any) => {
     if (response.ok) {
         return decodedResponse;
     } else {
-        const error = decodedResponse.detail[0].msg ? decodedResponse.detail[0].msg : decodedResponse.detail;
+        const error = decodedResponse.detail[firstDetail].msg
+            ? decodedResponse.detail[firstDetail].msg
+            : decodedResponse.detail;
         throw new Error(error);
     }
 };
